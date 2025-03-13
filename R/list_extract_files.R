@@ -10,6 +10,9 @@
 #' @param since Currently unused. Future documentation: Only list files
 #'    uploaded after this date. Optional, but must be in YYYY-MM-DD format.
 #'
+#' @return A data frame with columns of "project", "detection_type",
+#'  'detection_year', 'file_name', and "url".
+#'
 #' @export
 list_extract_files <- function(
   project,
@@ -36,8 +39,8 @@ list_extract_files <- function(
 
   json_response <- paste0(
     "https://members.oceantrack.org/api/++api++/data/repository/",
-    project_code,
-    "/detection-extracts/"
+    project,
+    "/detection-extracts/?b_size=100"
   ) |>
     httr2::request() |>
     httr2::req_perform() |>
@@ -52,5 +55,15 @@ list_extract_files <- function(
     links <- grep(detection_type, links, value = TRUE)
   }
 
-  links
+  data.frame(
+    project = project,
+    detection_type = gsub(
+      paste0(".*", project, "_(.*)_detections.*"),
+      "\\1",
+      links
+    ),
+    detection_year = as.numeric(gsub(".*detections_(.*)\\..*", "\\1", links)),
+    file_name = gsub(".*/detection-extracts/", "", links),
+    url = links
+  )
 }
