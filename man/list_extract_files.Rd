@@ -21,8 +21,8 @@ or the words detection(s)" are included.
 More information on data types can be found on
 \href{https://members.oceantrack.org/data/otn-detection-extract-documentation-matched-to-animals}{OTN's website}.}
 
-\item{since}{Currently unused. Future documentation: Only list files
-uploaded after this date. Optional, but must be in YYYY-MM-DD format.}
+\item{since}{Only list files uploaded after this date. Optional, but must be
+in YYYY-MM-DD format.}
 }
 \value{
 A data frame with columns of "project", "detection_type",

@@ -7,8 +7,8 @@
 #'    or the words detection(s)" are included.
 #'    More information on data types can be found on
 #'    \href{https://members.oceantrack.org/data/otn-detection-extract-documentation-matched-to-animals}{OTN's website}.
-#' @param since Currently unused. Future documentation: Only list files
-#'    uploaded after this date. Optional, but must be in YYYY-MM-DD format.
+#' @param since Only list files uploaded after this date. Optional, but must be
+#'    in YYYY-MM-DD format.
 #'
 #' @return A data frame with columns of "project", "detection_type",
 #'  'detection_year', 'file_name', and "url".
@@ -63,7 +63,7 @@ list_extract_files <- function(
     httr2::req_perform_parallel() |>
     lapply(httr2::resp_body_json)
 
-  data.frame(
+  files <- data.frame(
     project = project,
     file_type = sapply(file_metadata, function(x) x$parent$title),
     detection_type = gsub(
@@ -77,4 +77,20 @@ list_extract_files <- function(
     file_name = sapply(file_metadata, function(x) x$file$filename),
     url = sapply(file_metadata, function(x) x$file$download)
   )
+
+  if (!is.null(since)) {
+    # Check that date is in YYYY-MM-DD format
+    if (!grepl("^\\d{4}-\\d{2}-\\d{2}$", since)) {
+      warning(
+        paste0(
+          "The \"since\" date was not provided in YYYY-MM-DD format.",
+          "\nAll files have been returned."
+        )
+      )
+    } else {
+      files <- files[files$upload_date >= since, ]
+    }
+  }
+
+  files
 }
