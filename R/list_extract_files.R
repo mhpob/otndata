@@ -55,15 +55,26 @@ list_extract_files <- function(
     links <- grep(detection_type, links, value = TRUE)
   }
 
+  file_metadata <- lapply(links, function(x) {
+    httr2::request(x) |>
+      httr2::req_headers(Accept = "application/json") |>
+      httr2::req_throttle(capacity = 100, fill_time_s = 30)
+  }) |>
+    httr2::req_perform_parallel() |>
+    lapply(httr2::resp_body_json)
+
   data.frame(
     project = project,
+    file_type = sapply(file_metadata, function(x) x$parent$title),
     detection_type = gsub(
       paste0(".*", project, "_(.*)_detections.*"),
       "\\1",
       links
     ),
     detection_year = as.numeric(gsub(".*detections_(.*)\\..*", "\\1", links)),
-    file_name = gsub(".*/detection-extracts/", "", links),
-    url = links
+    upload_date = sapply(file_metadata, function(x) x$modified) |>
+      as.POSIXct(format = "%Y-%m-%dT%H:%M:%S", tz = "UTC"),
+    file_name = sapply(file_metadata, function(x) x$file$filename),
+    url = sapply(file_metadata, function(x) x$file$download)
   )
 }
