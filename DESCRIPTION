@@ -9,6 +9,9 @@ Description: An R API to access data from the Ocean Tracking Network (OTN)
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Imports:
-  httr2
+  cli,
+  getPass,
+  httr2,
+  rlang
