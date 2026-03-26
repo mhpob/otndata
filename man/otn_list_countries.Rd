@@ -4,7 +4,7 @@
 \alias{otn_list_countries}
 \title{Retrieve OTN country list}
 \usage{
-otn_list_countries(server = NULL)
+otn_list_countries(server = "otn")
 }
 \arguments{
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the

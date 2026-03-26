@@ -4,7 +4,7 @@
 \alias{otn_list_contacts}
 \title{Retrieve OTN contact list}
 \usage{
-otn_list_contacts(server = NULL)
+otn_list_contacts(server = "otn")
 }
 \arguments{
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the

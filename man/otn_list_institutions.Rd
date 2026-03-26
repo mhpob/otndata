@@ -4,7 +4,7 @@
 \alias{otn_list_institutions}
 \title{Retrieve OTN institution list}
 \usage{
-otn_list_institutions(server = NULL)
+otn_list_institutions(server = "otn")
 }
 \arguments{
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the

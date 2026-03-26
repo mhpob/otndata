@@ -4,7 +4,7 @@
 \alias{.otn_api}
 \title{Call OTN API endpoints}
 \usage{
-.otn_api(server = NULL, endpoint)
+.otn_api(server = "otn", endpoint)
 }
 \arguments{
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the

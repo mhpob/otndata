@@ -4,15 +4,15 @@
 \alias{otn_search_species}
 \title{Search OTN database by project species}
 \usage{
-otn_search_species(species, server = NULL)
+otn_search_species(species, server = "otn")
 }
 \arguments{
+\item{species}{Character. Project species for which to search. DOES NOT
+support partial matching and only recognizes scientific names of the
+form "Genus species" (note capitalization).}
+
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the
 main OTN server at \url{https://members.oceantrack.org}.}
-
-\item{contact}{Character. Project species for which to search. DOES NOT support partial matching
-and only recognizes scientific names of the form "Genus species" (note
-capitalization).}
 }
 \description{
 Search OTN database by project species

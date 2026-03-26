@@ -4,7 +4,7 @@
 \alias{otn_list_stats}
 \title{Retrieve OTN server statistics}
 \usage{
-otn_list_stats(server = NULL)
+otn_list_stats(server = "otn")
 }
 \arguments{
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the

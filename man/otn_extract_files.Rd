@@ -4,15 +4,18 @@
 \alias{otn_extract_files}
 \title{List OTN extract files}
 \usage{
-otn_extract_files(project, batch_size = NULL, server = NULL)
+otn_extract_files(project, server = NULL, since = NULL, batch_size = NULL)
 }
 \arguments{
 \item{project}{Character. The project code.}
 
-\item{batch_size}{Numeric. The number of results to return. Defaults to 25.}
-
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the
 main OTN server at \url{https://members.oceantrack.org}.}
+
+\item{since}{Character. Filter for files modified since this date
+(YYYY-MM-DD format).}
+
+\item{batch_size}{Numeric. The number of results to return. Defaults to 25.}
 }
 \description{
 This function recursively lists files in the \emph{Detection Extracts} section of

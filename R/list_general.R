@@ -26,7 +26,7 @@
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_contacts <- function(server = NULL) {
+otn_list_contacts <- function(server = "otn") {
   .otn_list(server, "contacts")
 }
 
@@ -34,7 +34,7 @@ otn_list_contacts <- function(server = NULL) {
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_countries <- function(server = NULL) {
+otn_list_countries <- function(server = "otn") {
   .otn_list(server, "countries")
 }
 
@@ -42,7 +42,7 @@ otn_list_countries <- function(server = NULL) {
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_species <- function(server = NULL) {
+otn_list_species <- function(server = "otn") {
   .otn_list(server, "species")
 }
 
@@ -50,7 +50,7 @@ otn_list_species <- function(server = NULL) {
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_institutions <- function(server = NULL) {
+otn_list_institutions <- function(server = "otn") {
   .otn_list(server, "institutions")
 }
 
@@ -58,7 +58,7 @@ otn_list_institutions <- function(server = NULL) {
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_projects <- function(server = NULL) {
+otn_list_projects <- function(server = "otn") {
   .otn_list(server, "projects")
 }
 
@@ -66,6 +66,6 @@ otn_list_projects <- function(server = NULL) {
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_stats <- function(server = NULL) {
+otn_list_stats <- function(server = "otn") {
   .otn_list(server, "stats")
 }

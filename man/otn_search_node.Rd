@@ -4,13 +4,13 @@
 \alias{otn_search_node}
 \title{Search OTN database by local node.}
 \usage{
-otn_search_node(node, server = NULL)
+otn_search_node(node, server = "otn")
 }
 \arguments{
+\item{node}{Character. OTN node for which to search. DOES NOT support partial matching.}
+
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the
 main OTN server at \url{https://members.oceantrack.org}.}
-
-\item{contact}{Character. OTN node for which to search. DOES NOT support partial matching.}
 }
 \description{
 Search OTN database by local node.

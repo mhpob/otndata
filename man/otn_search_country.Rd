@@ -4,13 +4,13 @@
 \alias{otn_search_country}
 \title{Search OTN database by project country.}
 \usage{
-otn_search_country(country, server = NULL)
+otn_search_country(country, server = "otn")
 }
 \arguments{
+\item{country}{Character. Project country for which to search. DOES NOT support partial matching.}
+
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the
 main OTN server at \url{https://members.oceantrack.org}.}
-
-\item{contact}{Character. Project country for which to search. DOES NOT support partial matching.}
 }
 \description{
 Search OTN database by project country.

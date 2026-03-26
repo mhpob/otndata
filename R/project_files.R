@@ -1,36 +1,86 @@
 #' Return files associated with an OTN project
 #'
 #' @param project Character. The project code.
+#' @param since Character. Filter for files modified since this date
+#'   (YYYY-MM-DD format).
+#' @param batch_size Numeric. The number of results to return. Defaults to 25.
 #' @param type Character. Portion of the URL representing the data type you wish
 #'   to return.
-#' @param batch_size Numeric. The number of results to return. Defaults to 25.
 #' @inheritParams .otn_api
-.otn_files <- function(project, type, batch_size = NULL, server = NULL) {
+.otn_files <- function(
+  project,
+  server = NULL,
+  since = NULL,
+  batch_size = NULL,
+  type
+) {
   session_token <- Sys.getenv("OTN_SESSION_TOKEN")
   project_endpoint <- paste(
-    "data/repository",
+    "/data/repository",
     project,
     type,
-    "@search",
+    ifelse(is.null(since), "@search", "@querystring-search"),
     sep = "/"
   )
 
+  query <- function(server, since) {
+    if (is.null(since)) {
+      server |>
+        .otn_api(project_endpoint) |>
+        httr2::req_url_query(
+          portal_type = "File",
+          b_size = batch_size,
+          metadata_fields = c(
+            "Creator",
+            "created",
+            "modified",
+            "getURL",
+            "id",
+            "title"
+          ),
+          .multi = "explode"
+        )
+    } else {
+      server |>
+        .otn_api(project_endpoint) |>
+        httr2::req_method("POST") |>
+        httr2::req_body_json(
+          list(
+            query = list(
+              list(
+                i = "portal_type",
+                o = "plone.app.querystring.operation.selection.any",
+                v = "File"
+              ),
+              list(
+                i = "modified",
+                o = "plone.app.querystring.operation.date.largerThan",
+                v = since
+              ),
+              list(
+                i = "path",
+                o = "plone.app.querystring.operation.string.path",
+                v = gsub("/@querystring-search", "::1", project_endpoint)
+              )
+            ),
+            b_size = batch_size,
+            metadata_fields = c(
+              "Creator",
+              "created",
+              "modified",
+              "getURL",
+              "id",
+              "title"
+            )
+          )
+        )
+    }
+  }
+
   the_files <- server |>
-    .otn_api(project_endpoint) |>
-    httr2::req_url_query(
-      portal_type = "File",
-      b_size = batch_size,
-      metadata_fields = c(
-        "Creator",
-        "created",
-        "modified",
-        "getURL",
-        "id",
-        "title"
-      ),
-      .multi = "explode"
-    ) |>
+    query(since) |>
     httr2::req_auth_bearer_token(session_token) |>
+
     httr2::req_perform() |>
     httr2::resp_body_json() |>
     _$items |>
@@ -98,10 +148,17 @@
 #' @export
 otn_project_files <- function(
   project,
-  batch_size = NULL,
-  server = NULL
+  server = NULL,
+  since = NULL,
+  batch_size = NULL
 ) {
-  .otn_files(project, "data-and-metadata", batch_size, server)
+  .otn_files(
+    project = project,
+    server = server,
+    since = since,
+    batch_size = batch_size,
+    type = "data-and-metadata"
+  )
 }
 
 #' List OTN extract files
@@ -113,8 +170,15 @@ otn_project_files <- function(
 #' @export
 otn_extract_files <- function(
   project,
-  batch_size = NULL,
-  server = NULL
+  server = NULL,
+  since = NULL,
+  batch_size = NULL
 ) {
-  .otn_files(project, "detection-extracts", batch_size, server)
+  .otn_files(
+    project = project,
+    server = server,
+    since = since,
+    batch_size = batch_size,
+    type = "detection-extracts"
+  )
 }

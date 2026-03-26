@@ -4,7 +4,7 @@
 \alias{otn_search_code}
 \title{Search OTN database by project code.}
 \usage{
-otn_search_code(code, server = NULL)
+otn_search_code(code, server = "otn")
 }
 \arguments{
 \item{code}{Character. Project code for which to search. Supports partial matching.}
