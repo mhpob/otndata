@@ -20,7 +20,7 @@ project-specific files.
 }
 \details{
 A pop up will appear asking for your username and password. If everything works
-out, your credentials will be kept in the sessions' cookies. Your username/password
-will not be saved -- this was done intentionally so that you don't accidentally
-save credentials in a public script.
+out, a token is written to the "OTN_SESSION_TOKEN" system variable.
+Your username/password will not be saved -- this was done intentionally so
+that you don't accidentally save credentials in a public script.
 }

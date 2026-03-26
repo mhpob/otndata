@@ -5,9 +5,9 @@
 #' project-specific files.
 #'
 #' A pop up will appear asking for your username and password. If everything works
-#' out, your credentials will be kept in the sessions' cookies. Your username/password
-#' will not be saved -- this was done intentionally so that you don't accidentally
-#' save credentials in a public script.
+#' out, a token is written to the "OTN_SESSION_TOKEN" system variable.
+#' Your username/password will not be saved -- this was done intentionally so
+#' that you don't accidentally save credentials in a public script.
 #'
 #' @inheritParams .otn_api
 #' @param set_credentials Logical. Provide credentials for the current
@@ -46,7 +46,7 @@ otn_login <- function(
   )
 
   cli::cli_alert_success("Login successful!")
-  invisible(login_response)
+  Sys.setenv(OTN_SESSION_TOKEN = login_response$token)
 }
 
 #' Install your OTN username and password in your \code{.Renviron} File for repeated use
@@ -67,8 +67,7 @@ otn_set_credentials <- function(temporary = TRUE, overwrite = FALSE) {
     username <- getPass::getPass("Username:", noblank = T)
     password <- getPass::getPass("Password:", noblank = T)
 
-    Sys.setenv(paste0("OTN_USER='", username, "'"))
-    Sys.setenv(paste0("OTN_PASS='", password, "'"))
+    Sys.setenv(OTN_USER = username, OTN_PASS = password)
   } else {
     home <- Sys.getenv("HOME")
     renv_path <- file.path(home, ".Renviron")
