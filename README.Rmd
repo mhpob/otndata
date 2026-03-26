@@ -1,0 +1,98 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# otndata
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+`otndata` is a wrapper around the Ocean Tracking Network's Plone content management system setup.
+
+## Installation
+
+You can install the development version of otndata from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("mhpob/otndata")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+There are a few things that can be accessed without logging in. Mainly all of the information presented via the leaflet map that can be seen on <https://members.oceantrack.org>.
+
+```{r example}
+library(otndata)
+
+otn_list_species() |>
+  head()
+
+otn_list_projects() |>
+  head()
+
+otn_list_stats()
+```
+
+You can also query projects according to code, country of origin, species, institution, node, or point of contact.
+
+```{r}
+otn_search_node("ACT") |>
+  head()
+
+otn_search_code("tail")
+
+otn_search_contact("Mike O'Brien")
+```
+
+
+You'll likely need to log in to access other parts of the CMS. You can set your username and password for your system using the `otn_set_credentials` helper function.
+
+
+```{r eval=FALSE}
+otn_set_credentials()
+```
+
+After that, you can just log in using `otn_login`. This package is meant to interface with any node's Plone instance. You can switch between them using the `server` argument.
+
+```{r login}
+otn_login(server = 'devel')
+```
+
+List your project's files:
+
+```{r}
+otn_project_files(project = 'nsbs', server = 'devel', batch_size = 5)
+
+otn_extract_files(project = 'nsbs', server = 'devel', batch_size = 5)
+```
+
+Or, just grab the ones modified more recently using the `since` argument:
+```{r}
+otn_project_files(
+  project = 'nsbs',
+  since = "2020-01-01",
+  server = 'devel',
+  batch_size = 5
+)
+
+otn_extract_files(
+  project = 'nsbs',
+  since = "2020-01-01",
+  server = 'devel',
+  batch_size = 5
+)
+```
