@@ -1,5 +1,8 @@
 #' Internal function to list small OTN data bases
 #'
+#' Provides access to the data that is on the main OTN members page. Login is
+#'   not required.
+#'
 #' @param type Character. Internal data base to retrieve.
 #' @inheritParams .otn_api
 .otn_list <- function(server = NULL, type) {
