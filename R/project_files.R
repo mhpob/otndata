@@ -119,7 +119,7 @@
   )
 
   # Up until now, the DF has had list columns.
-  #   Likely a way to fix L33 to avoid this.
+  #   Likely a way to fix the lapply(, t() |> data.frame()) step to address
   the_files <- the_files |>
     lapply(unlist) |>
     data.frame()
