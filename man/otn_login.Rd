@@ -4,13 +4,13 @@
 \alias{otn_login}
 \title{Authenticate to an Ocean Tracking Network server}
 \usage{
-otn_login(server = NULL, set_credentials = FALSE)
+otn_login(server = NULL, temporary = FALSE)
 }
 \arguments{
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the
 main OTN server at \url{https://members.oceantrack.org}.}
 
-\item{set_credentials}{Logical. Provide credentials for the current
+\item{temporary}{Logical. Provide credentials for the current
 session only?}
 }
 \description{
