@@ -10,21 +10,22 @@
 #' that you don't accidentally save credentials in a public script.
 #'
 #' @inheritParams .otn_api
-#' @param set_credentials Logical. Provide credentials for the current
+#' @param temporary Logical. Provide credentials for the current
 #'   session only?
 #' @export
 
 otn_login <- function(
   server = NULL,
-  set_credentials = FALSE
+  temporary = FALSE
 ) {
-  if (isTRUE(set_credentials)) {
-    otn_set_credentials(temporary = TRUE)
+  if (isTRUE(temporary)) {
+    otn_set_credentials(temporary = temporary)
   }
   creds <- c(login = Sys.getenv("OTN_USER"), pass = Sys.getenv("OTN_PASS"))
 
   if (any(creds == "")) {
-    cli::cli_abort("Credentials missing.")
+    cli::cli_alert_warning("Credentials missing")
+    otn_set_credentials(temporary = temporary)
   }
 
   login_request <- server |>
@@ -64,8 +65,8 @@ otn_login <- function(
 #' # Yup, that's it!
 otn_set_credentials <- function(temporary = TRUE, overwrite = FALSE) {
   if (isTRUE(temporary)) {
-    username <- getPass::getPass("Username:", noblank = T)
-    password <- getPass::getPass("Password:", noblank = T)
+    username <- askpass::askpass("Username: ")
+    password <- askpass::askpass("Password: ")
 
     Sys.setenv(OTN_USER = username, OTN_PASS = password)
   } else {
@@ -84,8 +85,8 @@ otn_set_credentials <- function(temporary = TRUE, overwrite = FALSE) {
       )
     }
 
-    username <- getPass::getPass("Username:", noblank = T)
-    password <- getPass::getPass("Password:", noblank = T)
+    username <- askpass::askpass("Username: ")
+    password <- askpass::askpass("Password: ")
 
     username <- paste0("OTN_USER='", username, "'")
     password <- paste0("OTN_PASS='", password, "'")
@@ -95,7 +96,7 @@ otn_set_credentials <- function(temporary = TRUE, overwrite = FALSE) {
     write(password, renv_path, sep = "\n", append = TRUE)
 
     cli::cli_alert_info(
-      'Your OTN credentials have been stored in your .Renviron and can be accessed by Sys.getenv("MATOS_USER") or Sys.getenv("MATOS_PASS"). \nTo use now, restart R or run `readRenviron("~/.Renviron")`'
+      'Your OTN credentials have been stored in your .Renviron and can be accessed by Sys.getenv("OTN_USER") or Sys.getenv("OTN_PASS"). \nTo use now, restart R or run `readRenviron("~/.Renviron")`.'
     )
   }
 }
