@@ -4,7 +4,7 @@
 \alias{otn_project_files}
 \title{List OTN project files}
 \usage{
-otn_project_files(project, server = NULL, since = NULL, batch_size = NULL)
+otn_project_files(project, server = NULL, since = NULL, batch_size = 25)
 }
 \arguments{
 \item{project}{Character. The project code.}

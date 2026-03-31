@@ -150,7 +150,7 @@ otn_project_files <- function(
   project,
   server = NULL,
   since = NULL,
-  batch_size = NULL
+  batch_size = 25
 ) {
   .otn_files(
     project = project,
@@ -172,7 +172,7 @@ otn_extract_files <- function(
   project,
   server = NULL,
   since = NULL,
-  batch_size = NULL
+  batch_size = 25
 ) {
   .otn_files(
     project = project,
