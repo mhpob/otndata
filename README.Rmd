@@ -31,8 +31,6 @@ pak::pak("mhpob/otndata")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
 There are a few things that can be accessed without logging in. Mainly all of the information presented via the leaflet map that can be seen on <https://members.oceantrack.org>.
 
 ```{r example}
@@ -94,5 +92,13 @@ otn_extract_files(
   since = "2020-01-01",
   server = 'devel',
   batch_size = 5
+)
+```
+
+
+You can download a file via its URL. This is a BIG work in progress and the API will likely change multiple times in the coming weeks.
+```{r eval=FALSE}
+otn_get_file(
+  "https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"
 )
 ```

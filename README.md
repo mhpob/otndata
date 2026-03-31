@@ -22,8 +22,6 @@ pak::pak("mhpob/otndata")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
 There are a few things that can be accessed without logging in. Mainly
 all of the information presented via the leaflet map that can be seen on
 <https://members.oceantrack.org>.
@@ -64,20 +62,13 @@ otn_list_projects() |>
 #> 4                        Sea trout <i>Salmo trutta</i> connectivity in Gullmarn fjord, Skagerrak
 #> 5                   Migration of anadromous brown trout between river and fjord, Nidelva, Norway
 #> 6 Big Fish: Cooperative monitoring network for fish spawning aggregations in the wider Caribbean
-#>         ocean                                              website             datacenter_infourl
-#> 1 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=6491&show=json   http://www.lifewatch.be/etn/
-#> 2 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=8311&show=json   http://www.lifewatch.be/etn/
-#> 3 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=6201&show=json   http://www.lifewatch.be/etn/
-#> 4 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=8137&show=json   http://www.lifewatch.be/etn/
-#> 5 NE ATLANTIC                                                 <NA> https://members.oceantrack.org
-#> 6 NW ATLANTIC                        http://geo.gcoos.org/restore/ https://members.oceantrack.org
-#>     id
-#> 1 <NA>
-#> 2 <NA>
-#> 3 <NA>
-#> 4 <NA>
-#> 5 <NA>
-#> 6 <NA>
+#>         ocean                                              website             datacenter_infourl   id
+#> 1 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=6491&show=json   http://www.lifewatch.be/etn/ <NA>
+#> 2 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=8311&show=json   http://www.lifewatch.be/etn/ <NA>
+#> 3 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=6201&show=json   http://www.lifewatch.be/etn/ <NA>
+#> 4 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=8137&show=json   http://www.lifewatch.be/etn/ <NA>
+#> 5 NE ATLANTIC                                                 <NA> https://members.oceantrack.org <NA>
+#> 6 NW ATLANTIC                        http://geo.gcoos.org/restore/ https://members.oceantrack.org <NA>
 
 otn_list_stats()
 #> $project_count
@@ -93,7 +84,7 @@ otn_list_stats()
 #> [1] 457
 #> 
 #> $rcvr_count
-#> [1] 2984
+#> [1] 2973
 ```
 
 You can also query projects according to code, country of origin,
@@ -264,4 +255,13 @@ otn_extract_files(
 #> 3 2016-12-21 15:42:11 2020-10-23 18:27:38  otnbot 141.0 KB File
 #> 4 2016-12-21 15:42:19 2020-08-18 17:38:32  otnbot  42.0 KB File
 #> 5 2017-05-05 18:21:55 2020-10-23 18:27:39  otnbot  74.4 KB File
+```
+
+You can download a file via its URL. This is a BIG work in progress and
+the API will likely change multiple times in the coming weeks.
+
+``` r
+otn_get_file(
+  "https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"
+)
 ```
