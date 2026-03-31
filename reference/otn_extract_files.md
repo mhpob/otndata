@@ -6,7 +6,7 @@ section of your project.
 ## Usage
 
 ``` r
-otn_extract_files(project, server = NULL, since = NULL, batch_size = NULL)
+otn_extract_files(project, server = NULL, since = NULL, batch_size = 25)
 ```
 
 ## Arguments
