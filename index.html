@@ -37,6 +37,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/mhpob/otndata/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -61,10 +62,9 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
 <p>There are a few things that can be accessed without logging in. Mainly all of the information presented via the leaflet map that can be seen on <a href="https://members.oceantrack.org" class="external-link uri">https://members.oceantrack.org</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">otndata</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://otndata.obrien.page" class="external-link">otndata</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/otn_list_species.html">otn_list_species</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -99,20 +99,13 @@
 <span><span class="co">#&gt; 4                        Sea trout &lt;i&gt;Salmo trutta&lt;/i&gt; connectivity in Gullmarn fjord, Skagerrak</span></span>
 <span><span class="co">#&gt; 5                   Migration of anadromous brown trout between river and fjord, Nidelva, Norway</span></span>
 <span><span class="co">#&gt; 6 Big Fish: Cooperative monitoring network for fish spawning aggregations in the wider Caribbean</span></span>
-<span><span class="co">#&gt;         ocean                                              website             datacenter_infourl</span></span>
-<span><span class="co">#&gt; 1 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=6491&amp;show=json   http://www.lifewatch.be/etn/</span></span>
-<span><span class="co">#&gt; 2 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=8311&amp;show=json   http://www.lifewatch.be/etn/</span></span>
-<span><span class="co">#&gt; 3 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=6201&amp;show=json   http://www.lifewatch.be/etn/</span></span>
-<span><span class="co">#&gt; 4 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=8137&amp;show=json   http://www.lifewatch.be/etn/</span></span>
-<span><span class="co">#&gt; 5 NE ATLANTIC                                                 &lt;NA&gt; https://members.oceantrack.org</span></span>
-<span><span class="co">#&gt; 6 NW ATLANTIC                        http://geo.gcoos.org/restore/ https://members.oceantrack.org</span></span>
-<span><span class="co">#&gt;     id</span></span>
-<span><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2 &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3 &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4 &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 5 &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6 &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;         ocean                                              website             datacenter_infourl   id</span></span>
+<span><span class="co">#&gt; 1 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=6491&amp;show=json   http://www.lifewatch.be/etn/ &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=8311&amp;show=json   http://www.lifewatch.be/etn/ &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=6201&amp;show=json   http://www.lifewatch.be/etn/ &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4 NE ATLANTIC http://www.lifewatch.be/en/imis?dasid=8137&amp;show=json   http://www.lifewatch.be/etn/ &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5 NE ATLANTIC                                                 &lt;NA&gt; https://members.oceantrack.org &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6 NW ATLANTIC                        http://geo.gcoos.org/restore/ https://members.oceantrack.org &lt;NA&gt;</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/otn_list_stats.html">otn_list_stats</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $project_count</span></span>
@@ -128,7 +121,7 @@
 <span><span class="co">#&gt; [1] 457</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $rcvr_count</span></span>
-<span><span class="co">#&gt; [1] 2984</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 2973</span></span></code></pre></div>
 <p>You can also query projects according to code, country of origin, species, institution, node, or point of contact.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/otn_search_node.html">otn_search_node</a></span><span class="op">(</span><span class="st">"ACT"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -278,9 +271,22 @@
 <span><span class="co">#&gt; 3 2016-12-21 15:42:11 2020-10-23 18:27:38  otnbot 141.0 KB File</span></span>
 <span><span class="co">#&gt; 4 2016-12-21 15:42:19 2020-08-18 17:38:32  otnbot  42.0 KB File</span></span>
 <span><span class="co">#&gt; 5 2017-05-05 18:21:55 2020-10-23 18:27:39  otnbot  74.4 KB File</span></span></code></pre></div>
+<p>You can download a file via its URL. This is a BIG work in progress and the API will likely change multiple times in the coming weeks.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">otn_get_file</span><span class="op">(</span></span>
+<span>  <span class="st">"https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/mhpob/otndata/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/mhpob/otndata/issues" class="external-link">Report a bug</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
