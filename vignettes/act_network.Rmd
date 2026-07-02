@@ -24,11 +24,6 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 library(arrow)
-#> 
-#> Attaching package: 'arrow'
-#> The following object is masked from 'package:utils':
-#> 
-#>     timestamp
 ```
 
 First, we need to log in. If you have never entered your username and password before, you'll need to do so. Run the following:
@@ -137,8 +132,8 @@ otn_extract_files(
 ) |>
   dplyr::filter(grepl("_qualified.*parquet", name)) |>
   otn_get_file(outdir = "./my_awesome_detections")
-#> Error in `httr2::request()`:
-#> ! `url` must be a single string, not a <data.frame> object.
+#> ℹ Directory created: ./my_awesome_detections.
+#> ℹ Files saved to ./my_awesome_detections/tailwinds_qualified_detections_2023.parquet and ./my_awesome_detections/tailwinds_qualified_detections_2024.parquet.
 ```
 
 Create a database on the fly using the [arrow package](https://arrow.apache.org/docs/r).
@@ -146,11 +141,34 @@ Create a database on the fly using the [arrow package](https://arrow.apache.org/
 
 ``` r
 my_db <- arrow::open_dataset("my_awesome_detections/")
-#> Error:
-#> ! IOError: Cannot list directory 'my_awesome_detections/'. Detail: [errno 2] No such file or directory
 my_db
-#> Error:
-#> ! object 'my_db' not found
+#> FileSystemDataset with 2 Parquet files
+#> 22 columns
+#> basisOfRecord: string
+#> institutionCode: string
+#> collectionCode: string
+#> dateLastModified: timestamp[ms]
+#> dateCollectedUTC: timestamp[ms]
+#> uncorrectedDateCollectedUTC: timestamp[ms]
+#> trackerCode: string
+#> tagName: string
+#> catalogNumber: string
+#> station: string
+#> receiverSerial: string
+#> decimalLongitude: double
+#> decimalLatitude: double
+#> geodeticDatum: string
+#> rcvrCatNumber: string
+#> sensorType: string
+#> sensorName: string
+#> sensorRaw: double
+#> geometry: binary
+#> contactPI: string
+#> ...
+#> 2 more columns
+#> Use `schema()` to see entire schema
+#> 
+#> See $metadata for additional Schema metadata
 ```
 
 Now we can do some really quick summaries.
@@ -162,8 +180,20 @@ my_db |>
   dplyr::tally() |>
   dplyr::arrange(-n) |>
   dplyr::collect()
-#> Error:
-#> ! object 'my_db' not found
+#> # A tibble: 58 × 2
+#>    trackerCode        n
+#>    <chr>          <int>
+#>  1 FACT.SCDNRGPD   1784
+#>  2 ACT.LICABLE     1290
+#>  3 ACT.MUFISH      1028
+#>  4 ACT.SBUSOMAS01   974
+#>  5 ACT.HMSWEA       757
+#>  6 ACT.NCATS2021    569
+#>  7 ACT.MSRPWS       507
+#>  8 ACT.SBUINGRAM    394
+#>  9 ACT.MUEMPIRE     281
+#> 10 ACT.MUS4F        246
+#> # ℹ 48 more rows
 ```
 
 Or find out who we should email and say "hi!".
@@ -175,8 +205,15 @@ my_db |>
   dplyr::mutate(contactPI = sub(" \\(.*", "", contactPI)) |>
   head() |>
   dplyr::collect()
-#> Error:
-#> ! object 'my_db' not found
+#> # A tibble: 6 × 1
+#>   contactPI       
+#>   <chr>           
+#> 1 Kara Dodge      
+#> 2 Matthew Ogburn  
+#> 3 Matthew Balazik 
+#> 4 Jeff Kneebone   
+#> 5 Michael Frisk   
+#> 6 Bradley Peterson
 ```
 
 
