@@ -1,0 +1,103 @@
+---
+title: "Access for ACT Network members"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Access for ACT Network members}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+You've just received notifications that your ACT Network tag matches are in. Hooray!! Let's walk through how to interact with all of your data.
+
+```{r setup}
+library(otndata)
+library(dplyr)
+library(arrow)
+```
+
+First, we need to log in. If you have never entered your username and password before, you'll need to do so. Run the following:
+
+```{r, eval=FALSE}
+otn_set_credentials()
+```
+
+This will just set your credentials for the current R session. If you wish to use the same credentials after closing/reopening R, use the `temporary = FALSE` argument:
+
+```{r, eval=FALSE}
+otn_set_credentials(temporary = F)
+```
+
+Now we can log in:
+
+```{r}
+otn_login(server = "act")
+
+# This will also work:
+# otn_login("act")
+```
+
+What you might first want to do is check out all of the data extract files on offer. Make sure you include the server that you're querying ("act").
+
+
+```{r}
+otn_extract_files(project = "tailwinds", server = "act")
+```
+
+This can be a lot! We can just grab the files that have been modified after a certain date -- usually the date just before the most-recent data push.
+
+
+```{r}
+otn_extract_files(project = "tailwinds", server = "act", since = "2026-06-12")
+```
+
+The most important thing, however, is downloading those files! Let's grab the parquet files and create a mini-database for ourselves.
+
+```{r}
+otn_extract_files(
+  project = "tailwinds",
+  server = "act",
+  since = "2026-06-12"
+) |>
+  dplyr::filter(grepl("_qualified.*parquet", name)) |>
+  otn_get_file(outdir = "./my_awesome_detections")
+```
+
+Create a database on the fly using the [arrow package](https://arrow.apache.org/docs/r).
+
+```{r}
+my_db <- arrow::open_dataset("my_awesome_detections/")
+my_db
+```
+
+Now we can do some really quick summaries.
+
+```{r}
+my_db |>
+  dplyr::group_by(trackerCode) |>
+  dplyr::tally() |>
+  dplyr::arrange(-n) |>
+  dplyr::collect()
+```
+
+Or find out who we should email and say "hi!".
+
+```{r}
+my_db |>
+  dplyr::distinct(contactPI) |>
+  dplyr::mutate(contactPI = sub(" \\(.*", "", contactPI)) |>
+  head() |>
+  dplyr::collect()
+```
+
+
+```{r, echo=FALSE}
+# Clean up the folder made above
+unlink("my_awesome_detections/")
+```
