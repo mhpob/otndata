@@ -41,7 +41,7 @@
           .multi = "explode"
         )
     } else {
-      server |>
+      j <- server |>
         .otn_api(project_endpoint) |>
         httr2::req_method("POST") |>
         httr2::req_body_json(
@@ -59,8 +59,8 @@
               ),
               list(
                 i = "path",
-                o = "plone.app.querystring.operation.string.path",
-                v = gsub("/@querystring-search", "::1", project_endpoint)
+                o = "plone.app.querystring.operation.string.relativePath",
+                v = "1"
               )
             ),
             b_size = batch_size,
