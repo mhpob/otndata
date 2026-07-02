@@ -1,3 +1,9 @@
+#' Download a file using the file's URL
+#'
+#' @param file_url The URL of the file as returned by `otn_project_files` or
+#'   `otn_extract_files`
+#' @param outdir The output directory (where you want the file to be saved).
+#'   Defaults to the current working directory.
 #' @export
 otn_get_file <- function(file_url, outdir = '.') {
   session_token <- Sys.getenv("OTN_SESSION_TOKEN")
@@ -23,7 +29,11 @@ otn_get_file <- function(file_url, outdir = '.') {
 
   file_name <- gsub("attachment; filename\\*=UTF-8''", '', cd_header)
 
+  out_name <- file.path(outdir, file_name)
+
   file_in_memory |>
     httr2::resp_body_raw() |>
     writeBin(con = file.path(outdir, file_name))
+
+  cli::cli_alert_info("File saved to {out_name}.")
 }

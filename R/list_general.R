@@ -5,7 +5,11 @@
 #'
 #' @param type Character. Internal data base to retrieve.
 #' @inheritParams .otn_api
+#'
+#' @keywords internal
 .otn_list <- function(server = NULL, type) {
+  check_server(server)
+
   endpoint <- switch(
     type,
     contacts = "all_contacts.json",

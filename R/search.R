@@ -3,8 +3,11 @@
 #' @param type Character. Internal data base to search.
 #' @param search_term Character. Search term to use.
 #' @inheritParams .otn_api
+#' @keywords internal
 .otn_search <- function(server, type, search_term) {
   `:=` <- NULL
+
+  check_server(server)
   endpoint <- paste0("projects_by_", type, ".json")
   key <- switch(
     type,

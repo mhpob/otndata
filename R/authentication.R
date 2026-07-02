@@ -18,6 +18,8 @@ otn_login <- function(
   server = NULL,
   temporary = FALSE
 ) {
+  check_server(server)
+
   if (isTRUE(temporary)) {
     otn_set_credentials(temporary = temporary)
   }

@@ -7,6 +7,7 @@
 #' @param type Character. Portion of the URL representing the data type you wish
 #'   to return.
 #' @inheritParams .otn_api
+#' @keywords internal
 .otn_files <- function(
   project,
   server = NULL,
@@ -41,7 +42,7 @@
           .multi = "explode"
         )
     } else {
-      j <- server |>
+      server |>
         .otn_api(project_endpoint) |>
         httr2::req_method("POST") |>
         httr2::req_body_json(
@@ -152,6 +153,8 @@ otn_project_files <- function(
   since = NULL,
   batch_size = 25
 ) {
+  check_server(server)
+
   .otn_files(
     project = project,
     server = server,
@@ -174,6 +177,8 @@ otn_extract_files <- function(
   since = NULL,
   batch_size = 25
 ) {
+  check_server(server)
+
   .otn_files(
     project = project,
     server = server,
