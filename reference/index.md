@@ -2,18 +2,10 @@
 
 ## All functions
 
-- [`.otn_api()`](dot-otn_api.md) : Call OTN API endpoints
-
-- [`.otn_files()`](dot-otn_files.md) : Return files associated with an
-  OTN project
-
-- [`.otn_list()`](dot-otn_list.md) : Internal function to list small OTN
-  data bases
-
-- [`.otn_search()`](dot-otn_search.md) : Internal function for searching
-  OTN projects
-
 - [`otn_extract_files()`](otn_extract_files.md) : List OTN extract files
+
+- [`otn_get_file()`](otn_get_file.md) : Download a file using the file's
+  URL
 
 - [`otn_list_contacts()`](otn_list_contacts.md) : Retrieve OTN contact
   list
