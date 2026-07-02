@@ -13,9 +13,9 @@ otn_set_server <- function(
     otn = "https://members.oceantrack.org",
     devel = "https://members.devel.oceantrack.org",
     npact = "https://plone.npact.aoos.org",
+    act = "https://data.theactnetwork.com",
 
     # Servers that don't exist and should error:
-    act = cli::cli_abort("ACT Plone server not yet implemented"),
     etn = cli::cli_abort(
       c(
         "ETN does not use an OTN-style Plone CMS.",
