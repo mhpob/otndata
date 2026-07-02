@@ -4,12 +4,14 @@
 \alias{otn_set_server}
 \title{Set the OTN Plone instance with which you wish to interact.}
 \usage{
-otn_set_server(server = c("otn", "npact", "act", "fact", "etn", "devel"))
+otn_set_server(
+  server = c("otn", "act", "npact", "pirat", "devel", "etn", "fact", "glatos")
+)
 }
 \arguments{
 \item{server}{Character. Lowercase network code of the desired server. One of
-"otn", "npact", "devel" (the OTN development server). Note that "atn", "fact",
-and "etn" are accepted, but only to produce an error and redirect you.}
+"otn", "act", "npact", or "devel" (the OTN development server). Note that
+"etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.}
 }
 \description{
 Set the OTN Plone instance with which you wish to interact.

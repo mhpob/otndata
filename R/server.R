@@ -1,19 +1,20 @@
 #' Set the OTN Plone instance with which you wish to interact.
 #'
 #' @param server Character. Lowercase network code of the desired server. One of
-#'   "otn", "npact", "devel" (the OTN development server). Note that "atn", "fact",
-#'   and "etn" are accepted, but only to produce an error and redirect you.
+#'   "otn", "act", "npact", or "devel" (the OTN development server). Note that
+#'   "etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.
 otn_set_server <- function(
-  server = c("otn", "npact", "act", "fact", "etn", "devel")
+  server = c("otn", "act", "npact", "pirat", "devel", "etn", "fact", "glatos")
 ) {
   server <- rlang::arg_match(server)
   switch(
     server,
     # Legitimate servers:
-    otn = "https://members.oceantrack.org",
+    act = "https://data.theactnetwork.com",
     devel = "https://members.devel.oceantrack.org",
     npact = "https://plone.npact.aoos.org",
-    act = "https://data.theactnetwork.com",
+    otn = "https://members.oceantrack.org",
+    pirat = "https://piratnetwork.org",
 
     # Servers that don't exist and should error:
     etn = cli::cli_abort(
@@ -22,6 +23,12 @@ otn_set_server <- function(
         "Check out the {.href [ETN R package](https://www.europeantrackingnetwork.org/en/etn-package)} instead."
       ),
     ),
-    fact = cli::cli_abort("FACT Plone server not yet implemented")
+    fact = cli::cli_abort("FACT Plone server not yet implemented"),
+    glatos = cli::cli_abort(
+      c(
+        "GLATOS does not use an OTN-style Plone CMS.",
+        "Check out the {.href [glatos R package](https://ocean-tracking-network.r-universe.dev/glatos)} instead."
+      )
+    )
   )
 }
