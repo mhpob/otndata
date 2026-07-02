@@ -9,6 +9,7 @@ You can install the development version of otndata from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("mhpob/otndata")
 ```
@@ -20,6 +21,7 @@ all of the information presented via the leaflet map that can be seen on
 <https://members.oceantrack.org>.
 
 ``` r
+
 library(otndata)
 
 otn_list_species() |>
@@ -84,6 +86,7 @@ You can also query projects according to code, country of origin,
 species, institution, node, or point of contact.
 
 ``` r
+
 otn_search_node("ACT") |>
   head()
 #>   node collectioncode country longitude latitude                                   shortname
@@ -139,6 +142,7 @@ set your username and password for your system using the
 `otn_set_credentials` helper function.
 
 ``` r
+
 otn_set_credentials()
 ```
 
@@ -147,6 +151,7 @@ to interface with any node’s Plone instance. You can switch between them
 using the `server` argument.
 
 ``` r
+
 otn_login(server = 'devel')
 #> ✔ Login successful!
 ```
@@ -154,6 +159,7 @@ otn_login(server = 'devel')
 List your project’s files:
 
 ``` r
+
 otn_project_files(project = 'nsbs', server = 'devel', batch_size = 5)
 #>                                           name  description
 #> 1        Copy of otn_tagging_metadata_2019.xls Manu tagging
@@ -205,6 +211,7 @@ Or, just grab the ones modified more recently using the `since`
 argument:
 
 ``` r
+
 otn_project_files(
   project = 'nsbs',
   since = "2020-01-01",
@@ -254,6 +261,7 @@ You can download a file via its URL. This is a BIG work in progress and
 the API will likely change multiple times in the coming weeks.
 
 ``` r
+
 otn_get_file(
   "https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"
 )
