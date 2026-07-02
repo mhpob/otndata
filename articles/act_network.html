@@ -78,12 +78,7 @@ data.</p>
 <span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/" class="external-link">arrow</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'arrow'</span></span>
-<span><span class="co">#&gt; The following object is masked from 'package:utils':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     timestamp</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/" class="external-link">arrow</a></span><span class="op">)</span></span></code></pre></div>
 <p>First, we need to log in. If you have never entered your username and
 password before, you’ll need to do so. Run the following:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -174,16 +169,39 @@ grab the parquet files and create a mini-database for ourselves.</p>
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">filter</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"_qualified.*parquet"</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/otn_get_file.html">otn_get_file</a></span><span class="op">(</span>outdir <span class="op">=</span> <span class="st">"./my_awesome_detections"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in `httr2::request()`:</span></span>
-<span><span class="co">#&gt; ! `url` must be a single string, not a &lt;data.frame&gt; object.</span></span></code></pre></div>
+<span><span class="co">#&gt; ℹ Directory created: ./my_awesome_detections.</span></span>
+<span><span class="co">#&gt; ℹ Files saved to ./my_awesome_detections/tailwinds_qualified_detections_2023.parquet and ./my_awesome_detections/tailwinds_qualified_detections_2024.parquet.</span></span></code></pre></div>
 <p>Create a database on the fly using the <a href="https://arrow.apache.org/docs/r" class="external-link">arrow package</a>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_db</span> <span class="op">&lt;-</span> <span class="fu">arrow</span><span class="fu">::</span><span class="fu">open_dataset</span><span class="op">(</span><span class="st">"my_awesome_detections/"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error:</span></span>
-<span><span class="co">#&gt; ! IOError: Cannot list directory 'my_awesome_detections/'. Detail: [errno 2] No such file or directory</span></span>
 <span><span class="va">my_db</span></span>
-<span><span class="co">#&gt; Error:</span></span>
-<span><span class="co">#&gt; ! object 'my_db' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; FileSystemDataset with 2 Parquet files</span></span>
+<span><span class="co">#&gt; 22 columns</span></span>
+<span><span class="co">#&gt; basisOfRecord: string</span></span>
+<span><span class="co">#&gt; institutionCode: string</span></span>
+<span><span class="co">#&gt; collectionCode: string</span></span>
+<span><span class="co">#&gt; dateLastModified: timestamp[ms]</span></span>
+<span><span class="co">#&gt; dateCollectedUTC: timestamp[ms]</span></span>
+<span><span class="co">#&gt; uncorrectedDateCollectedUTC: timestamp[ms]</span></span>
+<span><span class="co">#&gt; trackerCode: string</span></span>
+<span><span class="co">#&gt; tagName: string</span></span>
+<span><span class="co">#&gt; catalogNumber: string</span></span>
+<span><span class="co">#&gt; station: string</span></span>
+<span><span class="co">#&gt; receiverSerial: string</span></span>
+<span><span class="co">#&gt; decimalLongitude: double</span></span>
+<span><span class="co">#&gt; decimalLatitude: double</span></span>
+<span><span class="co">#&gt; geodeticDatum: string</span></span>
+<span><span class="co">#&gt; rcvrCatNumber: string</span></span>
+<span><span class="co">#&gt; sensorType: string</span></span>
+<span><span class="co">#&gt; sensorName: string</span></span>
+<span><span class="co">#&gt; sensorRaw: double</span></span>
+<span><span class="co">#&gt; geometry: binary</span></span>
+<span><span class="co">#&gt; contactPI: string</span></span>
+<span><span class="co">#&gt; ...</span></span>
+<span><span class="co">#&gt; 2 more columns</span></span>
+<span><span class="co">#&gt; Use `schema()` to see entire schema</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; See $metadata for additional Schema metadata</span></span></code></pre></div>
 <p>Now we can do some really quick summaries.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_db</span> <span class="op">|&gt;</span></span>
@@ -191,8 +209,20 @@ grab the parquet files and create a mini-database for ourselves.</p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">tally</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">arrange</span><span class="op">(</span><span class="op">-</span><span class="va">n</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">collect</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error:</span></span>
-<span><span class="co">#&gt; ! object 'my_db' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 58 × 2</span></span>
+<span><span class="co">#&gt;    trackerCode        n</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1 FACT.SCDNRGPD   1784</span></span>
+<span><span class="co">#&gt;  2 ACT.LICABLE     1290</span></span>
+<span><span class="co">#&gt;  3 ACT.MUFISH      1028</span></span>
+<span><span class="co">#&gt;  4 ACT.SBUSOMAS01   974</span></span>
+<span><span class="co">#&gt;  5 ACT.HMSWEA       757</span></span>
+<span><span class="co">#&gt;  6 ACT.NCATS2021    569</span></span>
+<span><span class="co">#&gt;  7 ACT.MSRPWS       507</span></span>
+<span><span class="co">#&gt;  8 ACT.SBUINGRAM    394</span></span>
+<span><span class="co">#&gt;  9 ACT.MUEMPIRE     281</span></span>
+<span><span class="co">#&gt; 10 ACT.MUS4F        246</span></span>
+<span><span class="co">#&gt; # ℹ 48 more rows</span></span></code></pre></div>
 <p>Or find out who we should email and say “hi!”.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_db</span> <span class="op">|&gt;</span></span>
@@ -200,8 +230,15 @@ grab the parquet files and create a mini-database for ourselves.</p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>contactPI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">" \\(.*"</span>, <span class="st">""</span>, <span class="va">contactPI</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">collect</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error:</span></span>
-<span><span class="co">#&gt; ! object 'my_db' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 6 × 1</span></span>
+<span><span class="co">#&gt;   contactPI       </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;           </span></span>
+<span><span class="co">#&gt; 1 Kara Dodge      </span></span>
+<span><span class="co">#&gt; 2 Matthew Ogburn  </span></span>
+<span><span class="co">#&gt; 3 Matthew Balazik </span></span>
+<span><span class="co">#&gt; 4 Jeff Kneebone   </span></span>
+<span><span class="co">#&gt; 5 Michael Frisk   </span></span>
+<span><span class="co">#&gt; 6 Bradley Peterson</span></span></code></pre></div>
   </main>
 </div>
 
