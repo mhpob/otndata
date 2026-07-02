@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-`otndata` is a wrapper around the Ocean Tracking Network's Plone content management system setup.
+`otndata` is a wrapper around the Ocean Tracking Network's Plone content management system setup. The [Ocean Tracking Network (OTN)](https://members.oceantrack.org), [Atlantic Cooperative Telemetry Network (ACT)](https://data.theactnetwork.com), [Pacific Islands Region Acoustic Telemetry Network (PIRAT)](https://piratnetwork.org), and [Northeast Pacific Acoustic Telemetry Network (N-PACT)](https://plone.npact.aoos.org) are all nominally supported, but some things might not work depending on the structure of the network and the optional add-ins used. Because of this, [bug reports are really, really, _really_ appreciated](https://github.com/mhpob/otndata/issues)!!
 
 ## Installation
 
@@ -31,18 +31,24 @@ pak::pak("mhpob/otndata")
 
 ## Example
 
-There are a few things that can be accessed without logging in. Mainly all of the information presented via the leaflet map that can be seen on <https://members.oceantrack.org>.
+There are a few things that can be accessed without logging in. Most nodes come pre-baked with a statistics widget and a project map:
+
+![Alternative text description](man/figures/README-widget.png)
+
+If this widget is enabled, you can access the information shown without needing to log in.
 
 ```{r example}
 library(otndata)
 
+# OTN's server (default)
 otn_list_species() |>
   head()
 
-otn_list_projects() |>
+# Try a different server
+otn_list_projects(server = "act") |>
   head()
 
-otn_list_stats()
+otn_list_stats(server = "devel")
 ```
 
 You can also query projects according to code, country of origin, species, institution, node, or point of contact.
@@ -51,8 +57,10 @@ You can also query projects according to code, country of origin, species, insti
 otn_search_node("ACT") |>
   head()
 
+# This accepts partial matches
 otn_search_code("tail")
 
+# This does not accept partial matches
 otn_search_contact("Mike O'Brien")
 ```
 
@@ -67,30 +75,30 @@ otn_set_credentials()
 After that, you can just log in using `otn_login`. This package is meant to interface with any node's Plone instance. You can switch between them using the `server` argument.
 
 ```{r login}
-otn_login(server = 'devel')
+otn_login(server = 'act')
 ```
 
 List your project's files:
 
 ```{r}
-otn_project_files(project = 'nsbs', server = 'devel', batch_size = 5)
+otn_project_files(project = 'tailwinds', server = 'act', batch_size = 5)
 
-otn_extract_files(project = 'nsbs', server = 'devel', batch_size = 5)
+otn_extract_files(project = 'tailwinds', server = 'act', batch_size = 5)
 ```
 
 Or, just grab the ones modified more recently using the `since` argument:
 ```{r}
 otn_project_files(
-  project = 'nsbs',
-  since = "2020-01-01",
-  server = 'devel',
+  project = 'tailwinds',
+  since = "2026-06-01",
+  server = 'act',
   batch_size = 5
 )
 
 otn_extract_files(
-  project = 'nsbs',
-  since = "2020-01-01",
-  server = 'devel',
+  project = 'tailwinds',
+  since = "2026-06-01",
+  server = 'act',
   batch_size = 5
 )
 ```
