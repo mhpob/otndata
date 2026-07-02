@@ -24,6 +24,11 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 library(arrow)
+#> 
+#> Attaching package: 'arrow'
+#> The following object is masked from 'package:utils':
+#> 
+#>     timestamp
 ```
 
 First, we need to log in. If you have never entered your username and password before, you'll need to do so. Run the following:
@@ -134,6 +139,7 @@ otn_extract_files(
   otn_get_file(outdir = "./my_awesome_detections")
 #> ℹ Directory created: ./my_awesome_detections.
 #> ℹ Files saved to ./my_awesome_detections/tailwinds_qualified_detections_2023.parquet and ./my_awesome_detections/tailwinds_qualified_detections_2024.parquet.
+#> [1] "./my_awesome_detections"
 ```
 
 Create a database on the fly using the [arrow package](https://arrow.apache.org/docs/r).
@@ -215,6 +221,3 @@ my_db |>
 #> 5 Michael Frisk   
 #> 6 Bradley Peterson
 ```
-
-
-

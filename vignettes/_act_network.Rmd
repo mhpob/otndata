@@ -99,5 +99,7 @@ my_db |>
 
 ```{r, echo=FALSE}
 # Clean up the folder made above
+rm(my_db)
+gc(verbose = FALSE)
 unlink("my_awesome_detections", recursive = T)
 ```
