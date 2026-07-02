@@ -1,16 +1,23 @@
-# Download a file using the file's URL
+# Download file(s) from an OTN-style Plone server
 
-Download a file using the file's URL
+Either `files` or `url` must be provided. If `files` is provided, files
+in the data.frame are downloaded in parallel.
 
 ## Usage
 
 ``` r
-otn_get_file(file_url, outdir = ".")
+otn_get_file(files = NULL, url = NULL, outdir = ".")
 ```
 
 ## Arguments
 
-- file_url:
+- files:
+
+  a data.frame returned by by `otn_project_files` or
+  `otn_extract_files`. Can have been filtered or edited, but must have
+  columns of "url" and "name".
+
+- url:
 
   The URL of the file as returned by `otn_project_files` or
   `otn_extract_files`
