@@ -7,13 +7,15 @@ Authors@R:
 Description: An R API to access data from the Ocean Tracking Network (OTN)
   database.
 License: MIT + file LICENSE
-Depends: R (>= 4.1.0)
+Depends: R (>= 4.3.0)
 Imports:
   askpass,
   cli,
   httr2,
   rlang
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -22,3 +24,4 @@ Config/testthat/parallel: true
 URL: https://otndata.obrien.page, https://github.com/mhpob/otndata
 BugReports: https://github.com/mhpob/otndata/issues
 Config/roxygen2/version: 8.0.0
+VignetteBuilder: knitr
