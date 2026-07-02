@@ -2,17 +2,22 @@
 % Please edit documentation in R/get_files.R
 \name{otn_get_file}
 \alias{otn_get_file}
-\title{Download a file using the file's URL}
+\title{Download file(s) from an OTN-style Plone server}
 \usage{
-otn_get_file(file_url, outdir = ".")
+otn_get_file(files = NULL, url = NULL, outdir = ".")
 }
 \arguments{
-\item{file_url}{The URL of the file as returned by \code{otn_project_files} or
+\item{files}{a data.frame returned by by \code{otn_project_files} or
+\code{otn_extract_files}. Can have been filtered or edited, but must have columns
+of "url" and "name".}
+
+\item{url}{The URL of the file as returned by \code{otn_project_files} or
 \code{otn_extract_files}}
 
 \item{outdir}{The output directory (where you want the file to be saved).
 Defaults to the current working directory.}
 }
 \description{
-Download a file using the file's URL
+Either \code{files} or \code{url} must be provided. If \code{files} is provided, files in
+the data.frame are downloaded in parallel.
 }
