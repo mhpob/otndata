@@ -2,10 +2,10 @@
 
 ## All functions
 
-- [`otn_extract_files()`](otn_extract_files.md) : List OTN extract files
-
-- [`otn_get_file()`](otn_get_file.md) : Download file(s) from an
+- [`otn_download()`](otn_download.md) : Download file(s) from an
   OTN-style Plone server
+
+- [`otn_extract_files()`](otn_extract_files.md) : List OTN extract files
 
 - [`otn_list_contacts()`](otn_list_contacts.md) : Retrieve OTN contact
   list

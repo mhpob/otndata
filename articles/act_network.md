@@ -124,20 +124,23 @@ otn_extract_files(project = "tailwinds", server = "act", since = "2026-06-12")
 ```
 
 The most important thing, however, is downloading those files! Let’s
-grab the parquet files and create a mini-database for ourselves.
+grab the parquet files via `otn_extract_files`, download them with
+`otn_download`, and create a mini-database for ourselves.
 
 ``` r
-
 otn_extract_files(
   project = "tailwinds",
   server = "act",
   since = "2026-06-12"
 ) |>
   dplyr::filter(grepl("_qualified.*parquet", name)) |>
-  otn_get_file(outdir = "./my_awesome_detections")
+  otn_download(outdir = "./my_awesome_detections")
 #> ℹ Directory created: ./my_awesome_detections.
-#> ℹ Files saved to ./my_awesome_detections/tailwinds_qualified_detections_2023.parquet and ./my_awesome_detections/tailwinds_qualified_detections_2024.parquet.
-#> [1] "./my_awesome_detections"
+#> 
+[working] (0 + 0) -> 1 -> 1 | ■■■■■■■■■■■■■■■■                 …
+
+                                                                
+ℹ Files saved to ./my_awesome_detections/tailwinds_qualified_detections_2023.parquet and ./my_awesome_detections/tailwinds_qualified_detections_2024.parquet.
 ```
 
 Create a database on the fly using the [arrow
@@ -220,3 +223,7 @@ my_db |>
 #> 5 Michael Frisk   
 #> 6 Bradley Peterson
 ```
+
+    #>           used  (Mb) gc trigger  (Mb) max used  (Mb)
+    #> Ncells 2203302 117.7    4350370 232.4  2880325 153.9
+    #> Vcells 4488849  34.3   10146329  77.5  7762659  59.3

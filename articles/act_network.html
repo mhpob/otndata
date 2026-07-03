@@ -165,18 +165,22 @@ push.</p>
 <span><span class="co">#&gt; 7 2026-06-12 13:26:59 2026-06-12 13:26:59 krichie  62.7 KB File</span></span>
 <span><span class="co">#&gt; 8 2026-06-12 13:27:14 2026-06-12 13:27:14 krichie  35.9 KB File</span></span></code></pre></div>
 <p>The most important thing, however, is downloading those files! Let’s
-grab the parquet files and create a mini-database for ourselves.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span></span>
-<span>  project <span class="op">=</span> <span class="st">"tailwinds"</span>,</span>
-<span>  server <span class="op">=</span> <span class="st">"act"</span>,</span>
-<span>  since <span class="op">=</span> <span class="st">"2026-06-12"</span></span>
-<span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">filter</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"_qualified.*parquet"</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/otn_get_file.html">otn_get_file</a></span><span class="op">(</span>outdir <span class="op">=</span> <span class="st">"./my_awesome_detections"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Directory created: ./my_awesome_detections.</span></span>
-<span><span class="co">#&gt; ℹ Files saved to ./my_awesome_detections/tailwinds_qualified_detections_2023.parquet and ./my_awesome_detections/tailwinds_qualified_detections_2024.parquet.</span></span>
-<span><span class="co">#&gt; [1] "./my_awesome_detections"</span></span></code></pre></div>
+grab the parquet files via <code>otn_extract_files</code>, download them
+with <code>otn_download</code>, and create a mini-database for
+ourselves.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">otn_extract_files</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">"tailwinds"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">"act"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="at">since =</span> <span class="st">"2026-06-12"</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"_qualified.*parquet"</span>, name)) <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="fu">otn_download</span>(<span class="at">outdir =</span> <span class="st">"./my_awesome_detections"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; ℹ Directory created: ./my_awesome_detections.</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>[working] (<span class="dv">0</span> <span class="sc">+</span> <span class="dv">0</span>) <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="sc">|</span> ■■■■■■■■■■■■■■■■                 …</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>                                                                </span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>ℹ Files saved to .<span class="sc">/</span>my_awesome_detections<span class="sc">/</span>tailwinds_qualified_detections_2023.parquet and .<span class="sc">/</span>my_awesome_detections<span class="sc">/</span>tailwinds_qualified_detections_2024.parquet.</span></code></pre></div>
 <p>Create a database on the fly using the <a href="https://arrow.apache.org/docs/r" class="external-link">arrow package</a>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_db</span> <span class="op">&lt;-</span> <span class="fu">arrow</span><span class="fu">::</span><span class="fu">open_dataset</span><span class="op">(</span><span class="st">"my_awesome_detections/"</span><span class="op">)</span></span>
@@ -245,6 +249,9 @@ grab the parquet files and create a mini-database for ourselves.</p>
 <span><span class="co">#&gt; 4 Jeff Kneebone   </span></span>
 <span><span class="co">#&gt; 5 Michael Frisk   </span></span>
 <span><span class="co">#&gt; 6 Bradley Peterson</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt;           used  (Mb) gc trigger  (Mb) max used  (Mb)</span></span>
+<span><span class="co">#&gt; Ncells 2203302 117.7    4350370 232.4  2880325 153.9</span></span>
+<span><span class="co">#&gt; Vcells 4488849  34.3   10146329  77.5  7762659  59.3</span></span></code></pre>
   </main>
 </div>
 

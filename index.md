@@ -318,7 +318,7 @@ the API will likely change multiple times in the coming weeks.
 
 ``` r
 
-otn_get_file(
-  "https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"
+otn_download(
+  url = "https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"
 )
 ```
