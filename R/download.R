@@ -11,7 +11,7 @@
 #' @param outdir The output directory (where you want the file to be saved).
 #'   Defaults to the current working directory.
 #' @export
-otn_get_file <- function(files = NULL, url = NULL, outdir = '.') {
+otn_download <- function(files = NULL, url = NULL, outdir = '.') {
   if (all(is.null(files), is.null(url))) {
     cli::cli_abort("Please provide one of `files` or `url`.")
   }
