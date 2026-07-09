@@ -22,6 +22,7 @@
 <url><loc>/reference/otn_list_stats.html</loc></url>
 <url><loc>/reference/otn_login.html</loc></url>
 <url><loc>/reference/otn_project_files.html</loc></url>
+<url><loc>/reference/otn_receiver_summary.html</loc></url>
 <url><loc>/reference/otn_search_code.html</loc></url>
 <url><loc>/reference/otn_search_contact.html</loc></url>
 <url><loc>/reference/otn_search_country.html</loc></url>
@@ -30,5 +31,6 @@
 <url><loc>/reference/otn_search_species.html</loc></url>
 <url><loc>/reference/otn_set_credentials.html</loc></url>
 <url><loc>/reference/otn_set_server.html</loc></url>
+<url><loc>/reference/otn_tag_summary.html</loc></url>
 </urlset>
 

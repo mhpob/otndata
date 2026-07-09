@@ -1,0 +1,71 @@
+# Create summary reports of receiver project data from the OTN data push
+
+Create summary reports of receiver project data from the OTN data push
+
+## Usage
+
+``` r
+otn_receiver_summary(
+  project = NULL,
+  server = NULL,
+  qualified = NULL,
+  unqualified = NULL,
+  deployment = NULL,
+  ...
+)
+```
+
+## Arguments
+
+- project:
+
+  Character. The project code.
+
+- server:
+
+  Character. URL of the OTN-style Plone server. Defaults to the main OTN
+  server at <https://members.oceantrack.org>.
+
+- qualified, unqualified:
+
+  Default is NULL: OTN qualified or unqualified detections in parquet
+  format will be downloaded from the data server. This argument also
+  accepts a character vector of file paths of your qualified/unqualified
+  detections if you do not wish to download your files or your node does
+  not use an OTN-style Plone CMS.
+
+- deployment:
+
+  File path of user-supplied master OTN receiver deployment metadata.
+
+- ...:
+
+  Arguments passed to
+  [`otndo::make_receiver_push_summary`](https://otndo.obrien.page/reference/make_receiver_push_summary.html)
+
+## No files provided
+
+If you only provide your project code and leave all of the arguments as
+their defaults, this function will ask you to log in then proceed to
+download all of the necessary files. You can speed up this process
+substantially by providing already-downloaded files.
+
+## Output
+
+This function creates an HTML report that can be viewed in your web
+browser.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+# Using only the project code:
+otn_receiver_summary("tailwinds")
+
+# Providing a local file:
+otn_receiver_summary("tailwinds", deployment = "my_master_deployment_metadata.xlsx")
+
+# Get a summary fo what has changed since a particular date:
+otn_receiver_summary("tailwinds", since = "2022-05-01")
+} # }
+```

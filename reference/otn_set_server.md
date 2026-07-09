@@ -6,7 +6,7 @@ Set the OTN Plone instance with which you wish to interact.
 
 ``` r
 otn_set_server(
-  server = c("otn", "act", "npact", "pirat", "devel", "etn", "fact", "glatos")
+  server = c("otn", "act", "npact", "pirat", "path", "devel", "etn", "fact", "glatos")
 )
 ```
 

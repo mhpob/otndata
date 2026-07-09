@@ -355,6 +355,9 @@ otn_download(
 
 - [`otn_project_files()`](otn_project_files.md) : List OTN project files
 
+- [`otn_receiver_summary()`](otn_receiver_summary.md) : Create summary
+  reports of receiver project data from the OTN data push
+
 - [`otn_search_code()`](otn_search_code.md) : Search OTN database by
   project code.
 
@@ -380,6 +383,9 @@ otn_download(
 
 - [`otn_set_server()`](otn_set_server.md) : Set the OTN Plone instance
   with which you wish to interact.
+
+- [`otn_tag_summary()`](otn_tag_summary.md) : Create summary reports of
+  receiver project data from the OTN data push
 
 # Articles
 
