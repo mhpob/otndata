@@ -31,6 +31,9 @@ otn_download <- function(files = NULL, url = NULL, outdir = '.') {
   }
 
   if (!is.null(files)) {
+    out_path <- file.path(outdir, files$name) |>
+      path.expand()
+
     responses <- lapply(
       files$url,
       function(x) {
@@ -39,27 +42,32 @@ otn_download <- function(files = NULL, url = NULL, outdir = '.') {
       }
     ) |>
       httr2::req_perform_parallel(
-        paths = file.path(outdir, files$name),
+        paths = out_path,
         on_error = "continue"
       )
 
-    cli::cli_alert_info("Files saved to {file.path(outdir, files$name)}.")
+    cli::cli_alert_info("Files saved to {out_path}.")
   } else {
+    # Download file to memory
     file_in_memory <- url |>
       build_request() |>
       httr2::req_perform()
 
+    # Parse header to find file name
     cd_header <- file_in_memory |>
       httr2::resp_header("Content-Disposition")
 
     file_name <- gsub("attachment; filename\\*=UTF-8''", '', cd_header)
 
-    out_name <- file.path(outdir, file_name)
+    out_path <- file.path(outdir, file_name)
 
+    # Write file in memory to disk
     file_in_memory |>
       httr2::resp_body_raw() |>
-      writeBin(con = file.path(outdir, file_name))
+      writeBin(con = out_path)
 
-    cli::cli_alert_info("File saved to {out_name}.")
+    cli::cli_alert_info("File saved to {out_path}.")
   }
+
+  return(out_path)
 }

@@ -5,7 +5,7 @@
 \title{Set the OTN Plone instance with which you wish to interact.}
 \usage{
 otn_set_server(
-  server = c("otn", "act", "npact", "pirat", "devel", "etn", "fact", "glatos")
+  server = c("otn", "act", "npact", "pirat", "path", "devel", "etn", "fact", "glatos")
 )
 }
 \arguments{

@@ -12,11 +12,14 @@ Imports:
   askpass,
   cli,
   httr2,
+  otndo,
   rlang
 Suggests: 
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
+  knitr,
+  rmarkdown,
+  testthat (>= 3.0.0)
+Remotes:
+  mhpob/otndo (>= 0.4.0)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
