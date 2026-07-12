@@ -1,6 +1,6 @@
-# Retrieve OTN server statistics
+# Retrieve OTN server statistics.
 
-Retrieve OTN server statistics
+Retrieve OTN server statistics.
 
 ## Usage
 

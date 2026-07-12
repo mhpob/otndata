@@ -1,6 +1,6 @@
-# Return files associated with an OTN project
+# Return files associated with an OTN project.
 
-Return files associated with an OTN project
+Return files associated with an OTN project.
 
 ## Usage
 

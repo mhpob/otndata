@@ -1,6 +1,6 @@
-# Retrieve OTN country list
+# Retrieve OTN country list.
 
-Retrieve OTN country list
+Retrieve OTN country list.
 
 ## Usage
 

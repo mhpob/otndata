@@ -1,4 +1,4 @@
-# Download file(s) from an OTN-style Plone server
+# Download file(s) from an OTN-style Plone server.
 
 Either `files` or `url` must be provided. If `files` is provided, files
 in the data.frame are downloaded in parallel.
@@ -26,3 +26,7 @@ otn_download(files = NULL, url = NULL, outdir = ".")
 
   The output directory (where you want the file to be saved). Defaults
   to the current working directory.
+
+## Value
+
+Silently returns a vector of file locations.

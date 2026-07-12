@@ -1,6 +1,6 @@
-# Call OTN API endpoints
+# Call OTN API endpoints.
 
-Call OTN API endpoints
+Call OTN API endpoints.
 
 ## Usage
 

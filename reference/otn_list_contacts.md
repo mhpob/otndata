@@ -1,6 +1,6 @@
-# Retrieve OTN contact list
+# Retrieve OTN contact list.
 
-Retrieve OTN contact list
+Retrieve OTN contact list.
 
 ## Usage
 

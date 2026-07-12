@@ -1,6 +1,6 @@
-# Retrieve OTN project list
+# Retrieve OTN project list.
 
-Retrieve OTN project list
+Retrieve OTN project list.
 
 ## Usage
 

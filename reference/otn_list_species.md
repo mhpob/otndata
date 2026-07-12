@@ -1,6 +1,6 @@
-# Retrieve OTN species list
+# Retrieve OTN species list.
 
-Retrieve OTN species list
+Retrieve OTN species list.
 
 ## Usage
 

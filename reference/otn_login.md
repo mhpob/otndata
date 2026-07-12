@@ -1,4 +1,4 @@
-# Authenticate to an Ocean Tracking Network server
+# Authenticate to an Ocean Tracking Network server.
 
 This function prompts you for the username and password associated with
 your OTN account. This is necessary so that you may interface with any

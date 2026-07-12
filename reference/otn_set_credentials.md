@@ -1,4 +1,4 @@
-# Install your OTN username and password in your `.Renviron` File for repeated use
+# Installs your OTN username and password in your `.Renviron` file for repeated use.
 
 This code was adapted from
 [`tidycensus::census_api_key`](https://github.com/walkerke/tidycensus/blob/ddb33b5f72734a4ff14332bd55cbac4850688600/R/helpers.R).

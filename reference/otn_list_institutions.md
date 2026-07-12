@@ -1,6 +1,6 @@
-# Retrieve OTN institution list
+# Retrieve OTN institution list.
 
-Retrieve OTN institution list
+Retrieve OTN institution list.
 
 ## Usage
 

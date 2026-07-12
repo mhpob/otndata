@@ -1,4 +1,4 @@
-# Internal function to list small OTN data bases
+# Internal function to list small OTN databases.
 
 Provides access to the data that is on the main OTN members page. Login
 is not required.

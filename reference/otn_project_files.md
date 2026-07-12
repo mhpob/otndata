@@ -1,4 +1,4 @@
-# List OTN project files
+# List OTN project files.
 
 This function lists the file names, types, upload date, and URLs of OTN
 project files – basically everything you see in the *Data and Metadata*

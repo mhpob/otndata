@@ -1,4 +1,4 @@
-# List OTN extract files
+# List OTN extract files.
 
 This function recursively lists files in the *Detection Extracts*
 section of your project.

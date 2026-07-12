@@ -1,6 +1,6 @@
-# Internal function for searching OTN projects
+# Internal function for searching OTN projects.
 
-Internal function for searching OTN projects
+Internal function for searching OTN projects.
 
 ## Usage
 

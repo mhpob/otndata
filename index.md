@@ -1,16 +1,37 @@
 # otndata
 
 `otndata` is a wrapper around the Ocean Tracking Network’s Plone content
-management system setup. The [Ocean Tracking Network
-(OTN)](https://members.oceantrack.org), [Atlantic Cooperative Telemetry
-Network (ACT)](https://data.theactnetwork.com), [Pacific Islands Region
-Acoustic Telemetry Network (PIRAT)](https://piratnetwork.org), and
-[Northeast Pacific Acoustic Telemetry Network
-(N-PACT)](https://plone.npact.aoos.org) are all nominally supported, but
-some things might not work depending on the structure of the network and
-the optional add-ins used. Because of this, [bug reports are really,
+management system. The following data portals are nominally supported,
+though some things might not work depending on the optional add-ons used
+by the various networks. Because of this, [bug reports are really,
 really, *really*
 appreciated](https://github.com/trackyverse/otndata/issues)!!
+
+- [Atlantic Cooperative Telemetry Network
+  (ACT)](https://data.theactnetwork.com)
+- [Northeast Pacific Acoustic Telemetry Network
+  (N-PACT)](https://plone.npact.aoos.org)
+- [Ocean Tracking Network (OTN)](https://members.oceantrack.org)
+- [Ocean Tracking Network’s development
+  server](https://members.devel.oceantrack.org)
+- [Pacific Islands Region Acoustic Telemetry Network
+  (PIRAT)](https://piratnetwork.org)
+
+The following networks are not supported for various reasons:
+
+- [Pacific Aquatic Telemetry Hub
+  (PATH)](https://fishdb.wfcb.ucdavis.edu): PATH will be supported
+  following an update to their version of Plone in the next few months.
+- [European Tracking Network (ETN)](https://www.lifewatch.be/etn): ETN
+  does not use a Plone CMS; see the [etn R
+  package](https://inbo.github.io/etn) for programmatic access.
+- [FACT](https://secoora.org/fact): FACT does not use a Plone CMS or
+  have a tool for programmatic access to their data portal.
+- [Great Lakes Acoustic Telemetry Observing System
+  (GLATOS)](https://glatos.org/portal): GLATOS does not use a Plone CMS
+  or have a tool for programmatic access to their data portal; see the
+  [glatos R package](https://github.com/ocean-tracking-network/glatos)
+  for data import, visualization, and analysis tools.
 
 ## Installation
 
@@ -314,8 +335,22 @@ otn_extract_files(
 #> 5 2026-06-12 13:26:33 2026-06-12 13:26:33 krichie 602.3 KB File
 ```
 
-You can download a file via its URL. This is a BIG work in progress and
-the API will likely change multiple times in the coming weeks.
+You can pipe this list into `otn_download` to save the files to your
+computer:
+
+``` r
+
+otn_extract_files(
+  project = 'tailwinds',
+  since = "2026-06-01",
+  server = 'act',
+  batch_size = 1
+) |>
+  otn_download()
+#> ℹ Files saved to ./tailwinds_qualified_detections_2023.parquet.
+```
+
+Or download directly via its URL:
 
 ``` r
 

@@ -1,6 +1,6 @@
-# Create summary reports of receiver project data from the OTN data push
+# Create summary reports of receiver project data from the OTN data push.
 
-Create summary reports of receiver project data from the OTN data push
+Create summary reports of receiver project data from the OTN data push.
 
 ## Usage
 
@@ -12,7 +12,7 @@ otn_tag_summary(project = NULL, server = NULL, matched = NULL, ...)
 
 - project:
 
-  Character. The project code.
+  Project name that you wish to have summarized
 
 - server:
 
@@ -32,15 +32,11 @@ otn_tag_summary(project = NULL, server = NULL, matched = NULL, ...)
   Arguments passed to
   [`otndo::make_tag_push_summary`](https://otndo.obrien.page/reference/make_tag_push_summary.html)
 
-- matos_project:
-
-  MATOS project number or name that you wish to have summarized
-
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
-# You can just use your ACT project number
+# You can just use your project name
 otn_tag_summary("mdwea")
 
 # Or provide an optional date to summarize "What's New".

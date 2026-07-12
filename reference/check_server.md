@@ -1,6 +1,6 @@
-# Check to see if the user has provided a server
+# Check to see if the user has provided a server.
 
-Check to see if the user has provided a server
+Check to see if the user has provided a server.
 
 ## Usage
 

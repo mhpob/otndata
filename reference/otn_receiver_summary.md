@@ -1,6 +1,6 @@
-# Create summary reports of receiver project data from the OTN data push
+# Create summary reports of receiver project data from the OTN data push.
 
-Create summary reports of receiver project data from the OTN data push
+Create summary reports of receiver project data from the OTN data push.
 
 ## Usage
 
