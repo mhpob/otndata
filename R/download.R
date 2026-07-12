@@ -10,6 +10,8 @@
 #'   `otn_extract_files`
 #' @param outdir The output directory (where you want the file to be saved).
 #'   Defaults to the current working directory.
+#'
+#' @returns Silently returns a vector of file locations.
 #' @export
 otn_download <- function(files = NULL, url = NULL, outdir = '.') {
   if (all(is.null(files), is.null(url))) {
@@ -69,5 +71,5 @@ otn_download <- function(files = NULL, url = NULL, outdir = '.') {
     cli::cli_alert_info("File saved to {out_path}.")
   }
 
-  return(out_path)
+  invisible(out_path)
 }

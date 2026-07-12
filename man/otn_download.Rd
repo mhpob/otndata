@@ -17,6 +17,9 @@ of "url" and "name".}
 \item{outdir}{The output directory (where you want the file to be saved).
 Defaults to the current working directory.}
 }
+\value{
+Silently returns a vector of file locations.
+}
 \description{
 Either \code{files} or \code{url} must be provided. If \code{files} is provided, files in
 the data.frame are downloaded in parallel.
