@@ -16,7 +16,8 @@ Acoustic Telemetry Network (PIRAT)](https://piratnetwork.org), and
 (N-PACT)](https://plone.npact.aoos.org) are all nominally supported, but
 some things might not work depending on the structure of the network and
 the optional add-ins used. Because of this, [bug reports are really,
-really, *really* appreciated](https://github.com/mhpob/otndata/issues)!!
+really, *really*
+appreciated](https://github.com/trackyverse/otndata/issues)!!
 
 ## Installation
 
@@ -25,7 +26,7 @@ You can install the development version of otndata from
 
 ``` r
 # install.packages("pak")
-pak::pak("mhpob/otndata")
+pak::pak("trackyverse/otndata")
 ```
 
 ## Example
@@ -116,7 +117,7 @@ otn_list_stats(server = "devel")
 #> [1] 468
 #> 
 #> $rcvr_count
-#> [1] 2824
+#> [1] 2815
 ```
 
 You can also query projects according to code, country of origin,

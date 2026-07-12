@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-`otndata` is a wrapper around the Ocean Tracking Network's Plone content management system setup. The [Ocean Tracking Network (OTN)](https://members.oceantrack.org), [Atlantic Cooperative Telemetry Network (ACT)](https://data.theactnetwork.com), [Pacific Islands Region Acoustic Telemetry Network (PIRAT)](https://piratnetwork.org), and [Northeast Pacific Acoustic Telemetry Network (N-PACT)](https://plone.npact.aoos.org) are all nominally supported, but some things might not work depending on the structure of the network and the optional add-ins used. Because of this, [bug reports are really, really, _really_ appreciated](https://github.com/mhpob/otndata/issues)!!
+`otndata` is a wrapper around the Ocean Tracking Network's Plone content management system setup. The [Ocean Tracking Network (OTN)](https://members.oceantrack.org), [Atlantic Cooperative Telemetry Network (ACT)](https://data.theactnetwork.com), [Pacific Islands Region Acoustic Telemetry Network (PIRAT)](https://piratnetwork.org), and [Northeast Pacific Acoustic Telemetry Network (N-PACT)](https://plone.npact.aoos.org) are all nominally supported, but some things might not work depending on the structure of the network and the optional add-ins used. Because of this, [bug reports are really, really, _really_ appreciated](https://github.com/trackyverse/otndata/issues)!!
 
 ## Installation
 
@@ -26,7 +26,7 @@ You can install the development version of otndata from [GitHub](https://github.
 
 ``` r
 # install.packages("pak")
-pak::pak("mhpob/otndata")
+pak::pak("trackyverse/otndata")
 ```
 
 ## Example
