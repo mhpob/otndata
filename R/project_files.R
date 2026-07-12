@@ -1,4 +1,4 @@
-#' Return files associated with an OTN project
+#' Return files associated with an OTN project.
 #'
 #' @param project Character. The project code.
 #' @param since Character. Filter for files modified since this date
@@ -138,7 +138,7 @@
   return(the_files)
 }
 
-#' List OTN project files
+#' List OTN project files.
 #'
 #' This function lists the file names, types, upload date, and URLs of OTN
 #' project files -- basically everything you see in the *Data and Metadata*
@@ -164,7 +164,7 @@ otn_project_files <- function(
   )
 }
 
-#' List OTN extract files
+#' List OTN extract files.
 #'
 #' This function recursively lists files in the *Detection Extracts* section of
 #' your project.

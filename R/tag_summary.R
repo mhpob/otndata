@@ -1,6 +1,6 @@
-#' Create summary reports of receiver project data from the OTN data push
+#' Create summary reports of receiver project data from the OTN data push.
 #'
-#' @param matos_project MATOS project number or name that you wish to have summarized
+#' @param project Project name that you wish to have summarized
 #' @param matched Default is NULL: OTN matched detections in parquet format will
 #'   be downloaded from the data server. If you do not wish to download your files
 #'   or your node does not use an OTN-style Plone CMS, this argument also accepts
@@ -12,7 +12,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' # You can just use your ACT project number
+#' # You can just use your project name
 #' otn_tag_summary("mdwea")
 #'
 #' # Or provide an optional date to summarize "What's New".

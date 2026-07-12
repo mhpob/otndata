@@ -2,7 +2,7 @@
 % Please edit documentation in R/search.R
 \name{.otn_search}
 \alias{.otn_search}
-\title{Internal function for searching OTN projects}
+\title{Internal function for searching OTN projects.}
 \usage{
 .otn_search(server, type, search_term)
 }
@@ -15,6 +15,6 @@ main OTN server at \url{https://members.oceantrack.org}.}
 \item{search_term}{Character. Search term to use.}
 }
 \description{
-Internal function for searching OTN projects
+Internal function for searching OTN projects.
 }
 \keyword{internal}

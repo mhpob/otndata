@@ -2,7 +2,7 @@
 % Please edit documentation in R/download.R
 \name{otn_download}
 \alias{otn_download}
-\title{Download file(s) from an OTN-style Plone server}
+\title{Download file(s) from an OTN-style Plone server.}
 \usage{
 otn_download(files = NULL, url = NULL, outdir = ".")
 }

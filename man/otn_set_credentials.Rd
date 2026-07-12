@@ -2,7 +2,7 @@
 % Please edit documentation in R/authentication.R
 \name{otn_set_credentials}
 \alias{otn_set_credentials}
-\title{Install your OTN username and password in your \code{.Renviron} File for repeated use}
+\title{Installs your OTN username and password in your \code{.Renviron} file for repeated use.}
 \usage{
 otn_set_credentials(temporary = TRUE, overwrite = FALSE)
 }

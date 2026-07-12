@@ -2,12 +2,12 @@
 % Please edit documentation in R/tag_summary.R
 \name{otn_tag_summary}
 \alias{otn_tag_summary}
-\title{Create summary reports of receiver project data from the OTN data push}
+\title{Create summary reports of receiver project data from the OTN data push.}
 \usage{
 otn_tag_summary(project = NULL, server = NULL, matched = NULL, ...)
 }
 \arguments{
-\item{project}{Character. The project code.}
+\item{project}{Project name that you wish to have summarized}
 
 \item{server}{Character. URL of the OTN-style Plone server. Defaults to the
 main OTN server at \url{https://members.oceantrack.org}.}
@@ -19,15 +19,13 @@ a character vector of file paths of your matched detections. These can be
 parquet, CSVs, or zipped folders.}
 
 \item{...}{Arguments passed to \code{otndo::make_tag_push_summary}}
-
-\item{matos_project}{MATOS project number or name that you wish to have summarized}
 }
 \description{
-Create summary reports of receiver project data from the OTN data push
+Create summary reports of receiver project data from the OTN data push.
 }
 \examples{
 \dontrun{
-# You can just use your ACT project number
+# You can just use your project name
 otn_tag_summary("mdwea")
 
 # Or provide an optional date to summarize "What's New".

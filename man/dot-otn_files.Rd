@@ -2,7 +2,7 @@
 % Please edit documentation in R/project_files.R
 \name{.otn_files}
 \alias{.otn_files}
-\title{Return files associated with an OTN project}
+\title{Return files associated with an OTN project.}
 \usage{
 .otn_files(project, server = NULL, since = NULL, batch_size = NULL, type)
 }
@@ -21,6 +21,6 @@ main OTN server at \url{https://members.oceantrack.org}.}
 to return.}
 }
 \description{
-Return files associated with an OTN project
+Return files associated with an OTN project.
 }
 \keyword{internal}

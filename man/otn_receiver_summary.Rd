@@ -2,7 +2,7 @@
 % Please edit documentation in R/receiver_summary.R
 \name{otn_receiver_summary}
 \alias{otn_receiver_summary}
-\title{Create summary reports of receiver project data from the OTN data push}
+\title{Create summary reports of receiver project data from the OTN data push.}
 \usage{
 otn_receiver_summary(
   project = NULL,
@@ -30,7 +30,7 @@ or your node does not use an OTN-style Plone CMS.}
 \item{...}{Arguments passed to \code{otndo::make_receiver_push_summary}}
 }
 \description{
-Create summary reports of receiver project data from the OTN data push
+Create summary reports of receiver project data from the OTN data push.
 }
 \section{No files provided}{
 

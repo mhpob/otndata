@@ -1,4 +1,4 @@
-#' Check to see if the user has provided a server
+#' Check to see if the user has provided a server.
 #'
 #' @inheritParams .otn_api
 #' @keywords internal

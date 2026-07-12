@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_general.R
 \name{otn_list_countries}
 \alias{otn_list_countries}
-\title{Retrieve OTN country list}
+\title{Retrieve OTN country list.}
 \usage{
 otn_list_countries(server = "otn")
 }
@@ -11,5 +11,5 @@ otn_list_countries(server = "otn")
 main OTN server at \url{https://members.oceantrack.org}.}
 }
 \description{
-Retrieve OTN country list
+Retrieve OTN country list.
 }

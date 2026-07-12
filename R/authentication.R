@@ -1,4 +1,4 @@
-#' Authenticate to an Ocean Tracking Network server
+#' Authenticate to an Ocean Tracking Network server.
 #'
 #' This function prompts you for the username and password associated with
 #' your OTN account. This is necessary so that you may interface with any
@@ -52,7 +52,7 @@ otn_login <- function(
   Sys.setenv(OTN_SESSION_TOKEN = login_response$token)
 }
 
-#' Install your OTN username and password in your \code{.Renviron} File for repeated use
+#' Installs your OTN username and password in your \code{.Renviron} file for repeated use.
 #'
 #' @description This code was adapted from \href{https://github.com/walkerke/tidycensus/blob/ddb33b5f72734a4ff14332bd55cbac4850688600/R/helpers.R}{\code{tidycensus::census_api_key}}. Note that this saves your credentials in your .Renviron, meaning that anyone who is using your computer can theoretically access what your MATOS username and password are. So... use this carefully!
 #'

@@ -1,4 +1,4 @@
-#' Create summary reports of receiver project data from the OTN data push
+#' Create summary reports of receiver project data from the OTN data push.
 #'
 #' @param qualified,unqualified Default is NULL: OTN qualified or unqualified
 #'   detections in parquet format will be downloaded from the data server. This

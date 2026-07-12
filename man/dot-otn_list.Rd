@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_general.R
 \name{.otn_list}
 \alias{.otn_list}
-\title{Internal function to list small OTN data bases}
+\title{Internal function to list small OTN databases.}
 \usage{
 .otn_list(server = NULL, type)
 }

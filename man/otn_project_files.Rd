@@ -2,7 +2,7 @@
 % Please edit documentation in R/project_files.R
 \name{otn_project_files}
 \alias{otn_project_files}
-\title{List OTN project files}
+\title{List OTN project files.}
 \usage{
 otn_project_files(project, server = NULL, since = NULL, batch_size = 25)
 }

@@ -32,6 +32,8 @@ The following networks are not supported for various reasons:
 - [European Tracking Network (ETN)](https://www.lifewatch.be/etn): ETN
   does not use a Plone CMS; see the [etn R
   package](https://inbo.github.io/etn) for programmatic access.
+- [FACT](https://secoora.org/fact): FACT does not use a Plone CMS or
+  have a tool for programmatic access to their data portal.
 - [Great Lakes Acoustic Telemetry Observing System
   (GLATOS)](https://glatos.org/portal): GLATOS does not use a Plone CMS
   or have a tool for programmatic access to their data portal; see the

@@ -2,7 +2,7 @@
 % Please edit documentation in R/zzz_checks.R
 \name{check_server}
 \alias{check_server}
-\title{Check to see if the user has provided a server}
+\title{Check to see if the user has provided a server.}
 \usage{
 check_server(server)
 }
@@ -11,6 +11,6 @@ check_server(server)
 main OTN server at \url{https://members.oceantrack.org}.}
 }
 \description{
-Check to see if the user has provided a server
+Check to see if the user has provided a server.
 }
 \keyword{internal}

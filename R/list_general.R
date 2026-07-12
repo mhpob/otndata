@@ -1,4 +1,4 @@
-#' Internal function to list small OTN data bases
+#' Internal function to list small OTN databases.
 #'
 #' Provides access to the data that is on the main OTN members page. Login is
 #'   not required.
@@ -26,7 +26,7 @@
     httr2::resp_body_json(simplifyVector = TRUE)
 }
 
-#' Retrieve OTN contact list
+#' Retrieve OTN contact list.
 #'
 #' @inheritParams .otn_list
 #' @export
@@ -34,7 +34,7 @@ otn_list_contacts <- function(server = "otn") {
   .otn_list(server, "contacts")
 }
 
-#' Retrieve OTN country list
+#' Retrieve OTN country list.
 #'
 #' @inheritParams .otn_list
 #' @export
@@ -42,7 +42,7 @@ otn_list_countries <- function(server = "otn") {
   .otn_list(server, "countries")
 }
 
-#' Retrieve OTN species list
+#' Retrieve OTN species list.
 #'
 #' @inheritParams .otn_list
 #' @export
@@ -50,7 +50,7 @@ otn_list_species <- function(server = "otn") {
   .otn_list(server, "species")
 }
 
-#' Retrieve OTN institution list
+#' Retrieve OTN institution list.
 #'
 #' @inheritParams .otn_list
 #' @export
@@ -58,7 +58,7 @@ otn_list_institutions <- function(server = "otn") {
   .otn_list(server, "institutions")
 }
 
-#' Retrieve OTN project list
+#' Retrieve OTN project list.
 #'
 #' @inheritParams .otn_list
 #' @export
@@ -66,7 +66,7 @@ otn_list_projects <- function(server = "otn") {
   .otn_list(server, "projects")
 }
 
-#' Retrieve OTN server statistics
+#' Retrieve OTN server statistics.
 #'
 #' @inheritParams .otn_list
 #' @export

@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_general.R
 \name{otn_list_contacts}
 \alias{otn_list_contacts}
-\title{Retrieve OTN contact list}
+\title{Retrieve OTN contact list.}
 \usage{
 otn_list_contacts(server = "otn")
 }
@@ -11,5 +11,5 @@ otn_list_contacts(server = "otn")
 main OTN server at \url{https://members.oceantrack.org}.}
 }
 \description{
-Retrieve OTN contact list
+Retrieve OTN contact list.
 }

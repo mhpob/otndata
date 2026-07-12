@@ -2,7 +2,7 @@
 % Please edit documentation in R/otn_api.R
 \name{.otn_api}
 \alias{.otn_api}
-\title{Call OTN API endpoints}
+\title{Call OTN API endpoints.}
 \usage{
 .otn_api(server = "otn", endpoint)
 }
@@ -13,6 +13,6 @@ main OTN server at \url{https://members.oceantrack.org}.}
 \item{endpoint}{Character. API endpoint to call.}
 }
 \description{
-Call OTN API endpoints
+Call OTN API endpoints.
 }
 \keyword{internal}

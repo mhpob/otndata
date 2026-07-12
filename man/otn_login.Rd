@@ -2,7 +2,7 @@
 % Please edit documentation in R/authentication.R
 \name{otn_login}
 \alias{otn_login}
-\title{Authenticate to an Ocean Tracking Network server}
+\title{Authenticate to an Ocean Tracking Network server.}
 \usage{
 otn_login(server = NULL, temporary = FALSE)
 }

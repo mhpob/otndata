@@ -1,4 +1,4 @@
-#' Download file(s) from an OTN-style Plone server
+#' Download file(s) from an OTN-style Plone server.
 #'
 #' Either `files` or `url` must be provided. If `files` is provided, files in
 #' the data.frame are downloaded in parallel.

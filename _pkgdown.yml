@@ -1,4 +1,35 @@
-url: ~
+url: https://otndata.obrien.page
 template:
   bootstrap: 5
-
+  light-switch: true
+reference:
+  - title: "Authentication"
+    contents:
+      - otn_login
+      - otn_set_credentials
+      - otn_set_server
+  - title: "Listing Project and Extract Files"
+    contents:
+      - otn_project_files
+      - otn_extract_files
+  - title: "Downloading files"
+    contents:
+      - otn_download
+  - title: "Summarize data extracts"
+    desc: >
+      Functions to download and prepare data for [otndo](https://otndo.obrien.page) reports 
+    contents:
+      - ends_with("summary")
+  - title: "Data from the summary widget"
+    desc: >
+      Polls the data from the OTN summary widget. Not all nodes have this add-on
+      installed, so be aware that they may not work.
+    contents:
+      - starts_with("otn_search")
+      - starts_with("otn_list")
+  - title: "Internals"
+    contents:
+      - .otn_api
+      - .otn_files
+      - .otn_list
+      - .otn_search

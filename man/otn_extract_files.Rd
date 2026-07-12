@@ -2,7 +2,7 @@
 % Please edit documentation in R/project_files.R
 \name{otn_extract_files}
 \alias{otn_extract_files}
-\title{List OTN extract files}
+\title{List OTN extract files.}
 \usage{
 otn_extract_files(project, server = NULL, since = NULL, batch_size = 25)
 }

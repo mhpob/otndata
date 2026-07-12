@@ -1,4 +1,4 @@
-#' Call OTN API endpoints
+#' Call OTN API endpoints.
 #'
 #' @param server Character. URL of the OTN-style Plone server. Defaults to the
 #'   main OTN server at <https://members.oceantrack.org>.

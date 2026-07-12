@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_general.R
 \name{otn_list_stats}
 \alias{otn_list_stats}
-\title{Retrieve OTN server statistics}
+\title{Retrieve OTN server statistics.}
 \usage{
 otn_list_stats(server = "otn")
 }
@@ -11,5 +11,5 @@ otn_list_stats(server = "otn")
 main OTN server at \url{https://members.oceantrack.org}.}
 }
 \description{
-Retrieve OTN server statistics
+Retrieve OTN server statistics.
 }

@@ -1,4 +1,4 @@
-#' Internal function for searching OTN projects
+#' Internal function for searching OTN projects.
 #'
 #' @param type Character. Internal data base to search.
 #' @param search_term Character. Search term to use.
