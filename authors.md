@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/mhpob/otndata/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/trackyverse/otndata/blob/main/DESCRIPTION)
 
 O'Brien M (2026). *otndata: Access Ocean Tracking Network Data*. R
 package version 0.0.0.9000, <https://otndata.obrien.page>.

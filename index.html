@@ -43,7 +43,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/mhpob/otndata/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/trackyverse/otndata/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -56,14 +56,14 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p><code>otndata</code> is a wrapper around the Ocean Tracking Network’s Plone content management system setup. The <a href="https://members.oceantrack.org" class="external-link">Ocean Tracking Network (OTN)</a>, <a href="https://data.theactnetwork.com" class="external-link">Atlantic Cooperative Telemetry Network (ACT)</a>, <a href="https://piratnetwork.org" class="external-link">Pacific Islands Region Acoustic Telemetry Network (PIRAT)</a>, and <a href="https://plone.npact.aoos.org" class="external-link">Northeast Pacific Acoustic Telemetry Network (N-PACT)</a> are all nominally supported, but some things might not work depending on the structure of the network and the optional add-ins used. Because of this, <a href="https://github.com/mhpob/otndata/issues" class="external-link">bug reports are really, really, <em>really</em> appreciated</a>!!</p>
+<p><code>otndata</code> is a wrapper around the Ocean Tracking Network’s Plone content management system setup. The <a href="https://members.oceantrack.org" class="external-link">Ocean Tracking Network (OTN)</a>, <a href="https://data.theactnetwork.com" class="external-link">Atlantic Cooperative Telemetry Network (ACT)</a>, <a href="https://piratnetwork.org" class="external-link">Pacific Islands Region Acoustic Telemetry Network (PIRAT)</a>, and <a href="https://plone.npact.aoos.org" class="external-link">Northeast Pacific Acoustic Telemetry Network (N-PACT)</a> are all nominally supported, but some things might not work depending on the structure of the network and the optional add-ins used. Because of this, <a href="https://github.com/trackyverse/otndata/issues" class="external-link">bug reports are really, really, <em>really</em> appreciated</a>!!</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the development version of otndata from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"mhpob/otndata"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"trackyverse/otndata"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
@@ -146,7 +146,7 @@ Alternative text description
 <span><span class="co">#&gt; [1] 468</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $rcvr_count</span></span>
-<span><span class="co">#&gt; [1] 2824</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 2815</span></span></code></pre></div>
 <p>You can also query projects according to code, country of origin, species, institution, node, or point of contact.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/otn_search_node.html">otn_search_node</a></span><span class="op">(</span><span class="st">"ACT"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -332,8 +332,8 @@ Alternative text description
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/mhpob/otndata/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/mhpob/otndata/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/trackyverse/otndata/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/trackyverse/otndata/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
