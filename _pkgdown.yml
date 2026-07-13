@@ -7,7 +7,6 @@ reference:
     contents:
       - otn_login
       - otn_set_credentials
-      - otn_set_server
   - title: "Listing Project and Extract Files"
     contents:
       - otn_project_files
@@ -29,6 +28,7 @@ reference:
       - starts_with("otn_list")
   - title: "Internals"
     contents:
+      - .otn_server_url
       - .otn_api
       - .otn_files
       - .otn_list
