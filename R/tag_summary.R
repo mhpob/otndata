@@ -6,7 +6,6 @@
 #'   or your node does not use an OTN-style Plone CMS, this argument also accepts
 #'   a character vector of file paths of your matched detections. These can be
 #'   parquet, CSVs, or zipped folders.
-#' @inheritParams otn_extract_files project server
 #' @param ... Arguments passed to \code{otndo::make_tag_push_summary}
 #'
 #' @export
@@ -20,7 +19,6 @@
 #' }
 otn_tag_summary <- function(
   project = NULL,
-  server = NULL,
   matched = NULL,
   ...
 ) {
@@ -32,10 +30,8 @@ otn_tag_summary <- function(
 
   # Project ----
   if (is.null(matched)) {
-    check_server(server)
-
     cli::cli_alert_info("Finding data extract files...")
-    extract_files <- otn_extract_files(project = project, server = server)
+    extract_files <- otn_extract_files(project = project)
     if (any(grepl(".*matched_detections.*parquet$", extract_files$url))) {
       cli::cli_alert_success("   Files found.")
     } else {

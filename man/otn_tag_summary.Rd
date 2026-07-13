@@ -4,13 +4,10 @@
 \alias{otn_tag_summary}
 \title{Create summary reports of receiver project data from the OTN data push.}
 \usage{
-otn_tag_summary(project = NULL, server = NULL, matched = NULL, ...)
+otn_tag_summary(project = NULL, matched = NULL, ...)
 }
 \arguments{
 \item{project}{Project name that you wish to have summarized}
-
-\item{server}{Character. URL of the OTN-style Plone server. Defaults to the
-main OTN server at \url{https://members.oceantrack.org}.}
 
 \item{matched}{Default is NULL: OTN matched detections in parquet format will
 be downloaded from the data server. If you do not wish to download your files

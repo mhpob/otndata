@@ -3,7 +3,8 @@
 #' @param server Character. Lowercase network code of the desired server. One of
 #'   "otn", "act", "npact", or "devel" (the OTN development server). Note that
 #'   "etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.
-otn_set_server <- function(
+#' @param set Set the server url in the `otn_global` environment?
+.otn_server_url <- function(
   server = c(
     "otn",
     "act",
@@ -14,10 +15,11 @@ otn_set_server <- function(
     "etn",
     "fact",
     "glatos"
-  )
+  ),
+  set = TRUE
 ) {
   server <- rlang::arg_match(server)
-  switch(
+  server <- switch(
     server,
     # Legitimate servers:
     act = "https://data.theactnetwork.com",
@@ -48,4 +50,9 @@ otn_set_server <- function(
       )
     )
   )
+
+  if (isTRUE(set)) {
+    otn_global$server <- server
+  }
+  invisible(server)
 }

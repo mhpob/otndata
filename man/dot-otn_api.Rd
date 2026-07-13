@@ -4,13 +4,14 @@
 \alias{.otn_api}
 \title{Call OTN API endpoints.}
 \usage{
-.otn_api(server = "otn", endpoint)
+.otn_api(endpoint, server = otn_global$server)
 }
 \arguments{
-\item{server}{Character. URL of the OTN-style Plone server. Defaults to the
-main OTN server at \url{https://members.oceantrack.org}.}
-
 \item{endpoint}{Character. API endpoint to call.}
+
+\item{server}{Character. Lowercase network code of the desired server. One of
+"otn", "act", "npact", or "devel" (the OTN development server). Note that
+"etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.}
 }
 \description{
 Call OTN API endpoints.

@@ -7,7 +7,7 @@
 #'   or your node does not use an OTN-style Plone CMS.
 #' @param deployment File path of user-supplied master OTN receiver deployment metadata.
 #' @param ... Arguments passed to \code{otndo::make_receiver_push_summary}
-#' @inheritParams otn_extract_files project server
+#' @inheritParams otn_extract_files project
 #'
 #' @section No files provided:
 #'
@@ -34,7 +34,6 @@
 #' }
 otn_receiver_summary <- function(
   project = NULL,
-  server = NULL,
   qualified = NULL,
   unqualified = NULL,
   deployment = NULL,
@@ -58,10 +57,8 @@ otn_receiver_summary <- function(
 
   # Project ----
   if (any(is.null(qualified), is.null(unqualified))) {
-    check_server(server)
-
     cli::cli_alert_info("Finding data extract files...")
-    extract_files <- otn_extract_files(project = project, server = server)
+    extract_files <- otn_extract_files(project = project)
     if (any(grepl(".*parquet$", extract_files$url))) {
       cli::cli_alert_success("   Files found.")
     } else {
@@ -94,7 +91,7 @@ otn_receiver_summary <- function(
   # Deployment log ----
   ##  Download deployment metadata if not provided
   if (is.null(deployment)) {
-    project_files <- otn_project_files(project = project, server = server)
+    project_files <- otn_project_files(project = project)
 
     deployment <- otn_download(
       files = project_files[

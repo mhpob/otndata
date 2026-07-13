@@ -6,16 +6,16 @@
 #' @param batch_size Numeric. The number of results to return. Defaults to 25.
 #' @param type Character. Portion of the URL representing the data type you wish
 #'   to return.
-#' @inheritParams .otn_api
 #' @keywords internal
 .otn_files <- function(
   project,
-  server = NULL,
   since = NULL,
   batch_size = NULL,
   type
 ) {
-  session_token <- Sys.getenv("OTN_SESSION_TOKEN")
+  # Project codes need to be lower case as we're essentially just matching the url
+  project <- tolower(project)
+
   project_endpoint <- paste(
     "/data/repository",
     project,
@@ -24,10 +24,10 @@
     sep = "/"
   )
 
-  query <- function(server, since) {
+  plone_query <- function(since) {
     if (is.null(since)) {
-      server |>
-        .otn_api(project_endpoint) |>
+      project_endpoint |>
+        .otn_api() |>
         httr2::req_url_query(
           portal_type = "File",
           b_size = batch_size,
@@ -42,8 +42,8 @@
           .multi = "explode"
         )
     } else {
-      server |>
-        .otn_api(project_endpoint) |>
+      project_endpoint |>
+        .otn_api() |>
         httr2::req_method("POST") |>
         httr2::req_body_json(
           list(
@@ -78,10 +78,8 @@
     }
   }
 
-  the_files <- server |>
-    query(since) |>
-    httr2::req_auth_bearer_token(session_token) |>
-
+  the_files <- plone_query(since) |>
+    httr2::req_auth_bearer_token(otn_global$SESSION_TOKEN) |>
     httr2::req_perform() |>
     httr2::resp_body_json() |>
     _$items |>
@@ -149,15 +147,11 @@
 #' @export
 otn_project_files <- function(
   project,
-  server = NULL,
   since = NULL,
   batch_size = 25
 ) {
-  check_server(server)
-
   .otn_files(
     project = project,
-    server = server,
     since = since,
     batch_size = batch_size,
     type = "data-and-metadata"
@@ -173,15 +167,11 @@ otn_project_files <- function(
 #' @export
 otn_extract_files <- function(
   project,
-  server = NULL,
   since = NULL,
   batch_size = 25
 ) {
-  check_server(server)
-
   .otn_files(
     project = project,
-    server = server,
     since = since,
     batch_size = batch_size,
     type = "detection-extracts"

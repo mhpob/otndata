@@ -78,25 +78,26 @@ otn_search_contact("Mike O'Brien")
 ```
 
 
-You'll likely need to log in to access other parts of the CMS. You can set your username and password for your system using the `otn_set_credentials` helper function.
-
-
-```{r eval=FALSE}
-otn_set_credentials()
-```
-
-After that, you can just log in using `otn_login`. This package is meant to interface with any node's Plone instance. You can switch between them using the `server` argument.
+You'll need to log in to access other parts of the CMS using `otn_login`. This package is meant to interface with any node's Plone instance. You can switch between them using the `server` argument.
 
 ```{r login}
 otn_login(server = 'act')
 ```
 
+ If you don't wish to enter your username and password every time, you can set the credentials for your system using the `otn_set_credentials` helper function.
+
+```{r eval=FALSE}
+otn_set_credentials("act")
+otn_login("act")
+```
+
+
 List your project's files:
 
 ```{r}
-otn_project_files(project = 'tailwinds', server = 'act', batch_size = 5)
+otn_project_files(project = 'tailwinds', batch_size = 5)
 
-otn_extract_files(project = 'tailwinds', server = 'act', batch_size = 5)
+otn_extract_files(project = 'tailwinds', batch_size = 5)
 ```
 
 Or, just grab the ones modified more recently using the `since` argument:
@@ -104,14 +105,12 @@ Or, just grab the ones modified more recently using the `since` argument:
 otn_project_files(
   project = 'tailwinds',
   since = "2026-06-01",
-  server = 'act',
   batch_size = 5
 )
 
 otn_extract_files(
   project = 'tailwinds',
   since = "2026-06-01",
-  server = 'act',
   batch_size = 5
 )
 ```
@@ -122,7 +121,6 @@ You can pipe this list into `otn_download` to save the files to your computer:
 otn_extract_files(
   project = 'tailwinds',
   since = "2026-06-01",
-  server = 'act',
   batch_size = 1
 ) |>
   otn_download()
@@ -133,4 +131,12 @@ Or download directly via its URL:
 otn_download(
   url = "https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"
 )
+```
+
+
+You can create [otndo reports](https://otndo.obrien.page) using the `otn_receiver_summary` and `otn_tag_summary` helper functions.
+
+```{r eval=FALSE}
+otn_receiver_summary("tailwinds")
+otn_tag_summary("mdwea")
 ```

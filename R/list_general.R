@@ -7,9 +7,7 @@
 #' @inheritParams .otn_api
 #'
 #' @keywords internal
-.otn_list <- function(server = NULL, type) {
-  check_server(server)
-
+.otn_list <- function(server, type) {
   endpoint <- switch(
     type,
     contacts = "all_contacts.json",
@@ -20,8 +18,8 @@
     stats = "header_stats.json"
   )
 
-  server |>
-    .otn_api(endpoint) |>
+  endpoint |>
+    .otn_api(server = .otn_server_url(server, set = FALSE)) |>
     httr2::req_perform() |>
     httr2::resp_body_json(simplifyVector = TRUE)
 }

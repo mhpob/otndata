@@ -4,14 +4,12 @@
 \alias{otn_login}
 \title{Authenticate to an Ocean Tracking Network server.}
 \usage{
-otn_login(server = NULL, temporary = FALSE)
+otn_login(server = NULL)
 }
 \arguments{
-\item{server}{Character. URL of the OTN-style Plone server. Defaults to the
-main OTN server at \url{https://members.oceantrack.org}.}
-
-\item{temporary}{Logical. Provide credentials for the current
-session only?}
+\item{server}{Character. Lowercase network code of the desired server. One of
+"otn", "act", "npact", or "devel" (the OTN development server). Note that
+"etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.}
 }
 \description{
 This function prompts you for the username and password associated with
@@ -20,7 +18,7 @@ project-specific files.
 }
 \details{
 A pop up will appear asking for your username and password. If everything works
-out, a token is written to the "OTN_SESSION_TOKEN" system variable.
+out, a token is written to the "SESSION_TOKEN" variable in the \code{otn_global} environment.
 Your username/password will not be saved -- this was done intentionally so
 that you don't accidentally save credentials in a public script.
 }

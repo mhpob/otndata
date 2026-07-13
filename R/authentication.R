@@ -5,33 +5,37 @@
 #' project-specific files.
 #'
 #' A pop up will appear asking for your username and password. If everything works
-#' out, a token is written to the "OTN_SESSION_TOKEN" system variable.
+#' out, a token is written to the "SESSION_TOKEN" variable in the `otn_global` environment.
 #' Your username/password will not be saved -- this was done intentionally so
 #' that you don't accidentally save credentials in a public script.
 #'
 #' @inheritParams .otn_api
-#' @param temporary Logical. Provide credentials for the current
-#'   session only?
+#' @inheritParams .otn_server_url
+#'
 #' @export
 
 otn_login <- function(
-  server = NULL,
-  temporary = FALSE
+  server = NULL
 ) {
-  check_server(server)
+  .otn_server_url(server)
 
-  if (isTRUE(temporary)) {
-    otn_set_credentials(temporary = temporary)
-  }
-  creds <- c(login = Sys.getenv("OTN_USER"), pass = Sys.getenv("OTN_PASS"))
+  creds <- c(
+    login = Sys.getenv(paste("OTN_USER", server, sep = ".")),
+    pass = Sys.getenv(paste("OTN_PASS", server, sep = "."))
+  )
 
   if (any(creds == "")) {
     cli::cli_alert_warning("Credentials missing")
-    otn_set_credentials(temporary = temporary)
+    otn_set_credentials(server, temporary = TRUE)
+
+    creds <- c(
+      login = otn_global[[paste("OTN_USER", server, sep = ".")]],
+      pass = otn_global[[paste("OTN_PASS", server, sep = ".")]]
+    )
   }
 
-  login_request <- server |>
-    .otn_api("@login") |>
+  login_request <- "@login" |>
+    .otn_api() |>
     httr2::req_body_json(
       list(
         login = creds["login"],
@@ -49,7 +53,7 @@ otn_login <- function(
   )
 
   cli::cli_alert_success("Login successful!")
-  Sys.setenv(OTN_SESSION_TOKEN = login_response$token)
+  otn_global$SESSION_TOKEN <- login_response$token
 }
 
 #' Installs your OTN username and password in your \code{.Renviron} file for repeated use.
@@ -57,20 +61,23 @@ otn_login <- function(
 #' @description This code was adapted from \href{https://github.com/walkerke/tidycensus/blob/ddb33b5f72734a4ff14332bd55cbac4850688600/R/helpers.R}{\code{tidycensus::census_api_key}}. Note that this saves your credentials in your .Renviron, meaning that anyone who is using your computer can theoretically access what your MATOS username and password are. So... use this carefully!
 #'
 #' @param temporary Logical. Scrub credentials after the current session?
-#' @param overwrite Logical. Overwrite previously-stored MATOS credentials?
+#' @param overwrite Logical. Overwrite previously-stored credentials?
+#' @inheritParams .otn_server_url
 #'
 #' @export
 #' @examples
 #' \dontrun{
-#' otn_set_credentials()
+#' otn_set_credentials("act")
 #' }
 #' # Yup, that's it!
-otn_set_credentials <- function(temporary = TRUE, overwrite = FALSE) {
-  if (isTRUE(temporary)) {
-    username <- askpass::askpass("Username: ")
-    password <- askpass::askpass("Password: ")
+otn_set_credentials <- function(server, temporary = FALSE, overwrite = FALSE) {
+  username <- askpass::askpass("Username: ")
+  password <- askpass::askpass("Password: ")
 
-    Sys.setenv(OTN_USER = username, OTN_PASS = password)
+  if (isTRUE(temporary)) {
+    # Write to otn_global environment
+    otn_global[[paste("OTN_USER", server, sep = ".")]] <- username
+    otn_global[[paste("OTN_PASS", server, sep = ".")]] <- password
   } else {
     home <- Sys.getenv("HOME")
     renv_path <- file.path(home, ".Renviron")
@@ -81,24 +88,37 @@ otn_set_credentials <- function(temporary = TRUE, overwrite = FALSE) {
 
     renv <- readLines(renv_path)
 
-    if (any(grepl("OTN", renv), grepl("OTN", Sys.getenv())) && overwrite == F) {
+    if (
+      any(
+        grepl(paste0("OTN.*", server), renv),
+        grepl(paste0("OTN.*", server), Sys.getenv())
+      ) &&
+        overwrite == F
+    ) {
       cli::cli_abort(
-        "Some OTN credentials already exist. You can overwrite them with the argument overwrite=TRUE."
+        "Some credentials for that server already exist. You can overwrite them
+        with the argument `overwrite=TRUE`."
       )
     }
 
-    username <- askpass::askpass("Username: ")
-    password <- askpass::askpass("Password: ")
-
-    username <- paste0("OTN_USER='", username, "'")
-    password <- paste0("OTN_PASS='", password, "'")
-
-    # Append API key to .Renviron file
-    write(username, renv_path, sep = "\n", append = TRUE)
-    write(password, renv_path, sep = "\n", append = TRUE)
+    # Append credentials to .Renviron file
+    write(
+      paste0("OTN_USER.", server, "='", username, "'"),
+      renv_path,
+      sep = "\n",
+      append = TRUE
+    )
+    write(
+      paste0("OTN_PASS.", server, "='", password, "'"),
+      renv_path,
+      sep = "\n",
+      append = TRUE
+    )
 
     cli::cli_alert_info(
-      'Your OTN credentials have been stored in your .Renviron and can be accessed by Sys.getenv("OTN_USER") or Sys.getenv("OTN_PASS"). \nTo use now, restart R or run `readRenviron("~/.Renviron")`.'
+      'Your OTN credentials have been stored in your .Renviron and can be accessed
+      by Sys.getenv("OTN_USER") or Sys.getenv("OTN_PASS"). \nTo use now, restart
+      R or run `readRenviron("~/.Renviron")`.'
     )
   }
 }

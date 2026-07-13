@@ -7,8 +7,9 @@
 otn_list_projects(server = "otn")
 }
 \arguments{
-\item{server}{Character. URL of the OTN-style Plone server. Defaults to the
-main OTN server at \url{https://members.oceantrack.org}.}
+\item{server}{Character. Lowercase network code of the desired server. One of
+"otn", "act", "npact", or "devel" (the OTN development server). Note that
+"etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.}
 }
 \description{
 Retrieve OTN project list.

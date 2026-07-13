@@ -7,7 +7,6 @@
 .otn_search <- function(server, type, search_term) {
   `:=` <- NULL
 
-  check_server(server)
   endpoint <- paste0("projects_by_", type, ".json")
   key <- switch(
     type,
@@ -18,8 +17,8 @@
     node = "node",
     institutions = "institution"
   )
-  base_req <- server |>
-    .otn_api(endpoint)
+  base_req <- endpoint |>
+    .otn_api(server = .otn_server_url(server, set = FALSE))
 
   rlang::inject(httr2::req_url_query(
     base_req,

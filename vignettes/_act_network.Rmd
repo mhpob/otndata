@@ -24,37 +24,28 @@ library(arrow)
 
 First, we need to log in. If you have never entered your username and password before, you'll need to do so. Run the following:
 
-```{r, eval=FALSE}
-otn_set_credentials()
-```
-
-This will just set your credentials for the current R session. If you wish to use the same credentials after closing/reopening R, use the `temporary = FALSE` argument:
-
-```{r, eval=FALSE}
-otn_set_credentials(temporary = F)
-```
-
-Now we can log in:
-
 ```{r}
-otn_login(server = "act")
+otn_login("act")
+```
 
-# This will also work:
-# otn_login("act")
+This will just set your credentials for the current R session. If you wish to use the same credentials after closing/reopening R, use `otn_set_credentials`:
+
+```{r, eval=FALSE}
+otn_set_credentials("act")
 ```
 
 What you might first want to do is check out all of the data extract files on offer. Make sure you include the server that you're querying ("act").
 
 
 ```{r}
-otn_extract_files(project = "tailwinds", server = "act")
+otn_extract_files(project = "tailwinds")
 ```
 
 This can be a lot! We can just grab the files that have been modified after a certain date -- usually the date just before the most-recent data push.
 
 
 ```{r}
-otn_extract_files(project = "tailwinds", server = "act", since = "2026-06-12")
+otn_extract_files(project = "tailwinds", since = "2026-06-12")
 ```
 
 The most important thing, however, is downloading those files! Let's grab the parquet files via `otn_extract_files`, download them with `otn_download`, and create a mini-database for ourselves.
@@ -62,7 +53,6 @@ The most important thing, however, is downloading those files! Let's grab the pa
 ```{r}
 otn_extract_files(
   project = "tailwinds",
-  server = "act",
   since = "2026-06-12"
 ) |>
   dplyr::filter(grepl("_qualified.*parquet", name)) |>

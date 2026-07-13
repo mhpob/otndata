@@ -6,7 +6,6 @@
 \usage{
 otn_receiver_summary(
   project = NULL,
-  server = NULL,
   qualified = NULL,
   unqualified = NULL,
   deployment = NULL,
@@ -15,9 +14,6 @@ otn_receiver_summary(
 }
 \arguments{
 \item{project}{Character. The project code.}
-
-\item{server}{Character. URL of the OTN-style Plone server. Defaults to the
-main OTN server at \url{https://members.oceantrack.org}.}
 
 \item{qualified, unqualified}{Default is NULL: OTN qualified or unqualified
 detections in parquet format will be downloaded from the data server. This

@@ -4,19 +4,23 @@
 \alias{otn_set_credentials}
 \title{Installs your OTN username and password in your \code{.Renviron} file for repeated use.}
 \usage{
-otn_set_credentials(temporary = TRUE, overwrite = FALSE)
+otn_set_credentials(server, temporary = FALSE, overwrite = FALSE)
 }
 \arguments{
+\item{server}{Character. Lowercase network code of the desired server. One of
+"otn", "act", "npact", or "devel" (the OTN development server). Note that
+"etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.}
+
 \item{temporary}{Logical. Scrub credentials after the current session?}
 
-\item{overwrite}{Logical. Overwrite previously-stored MATOS credentials?}
+\item{overwrite}{Logical. Overwrite previously-stored credentials?}
 }
 \description{
 This code was adapted from \href{https://github.com/walkerke/tidycensus/blob/ddb33b5f72734a4ff14332bd55cbac4850688600/R/helpers.R}{\code{tidycensus::census_api_key}}. Note that this saves your credentials in your .Renviron, meaning that anyone who is using your computer can theoretically access what your MATOS username and password are. So... use this carefully!
 }
 \examples{
 \dontrun{
-otn_set_credentials()
+otn_set_credentials("act")
 }
 # Yup, that's it!
 }

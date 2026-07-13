@@ -17,13 +17,12 @@ otn_download <- function(files = NULL, url = NULL, outdir = '.') {
   if (all(is.null(files), is.null(url))) {
     cli::cli_abort("Please provide one of `files` or `url`.")
   }
-  session_token <- Sys.getenv("OTN_SESSION_TOKEN")
 
   build_request <- function(file_url) {
     file_url |>
       httr2::request() |>
       httr2::req_url_path_append("@@download/file") |>
-      httr2::req_cookies_set(auth_token = session_token)
+      httr2::req_cookies_set(auth_token = otn_global$SESSION_TOKEN)
   }
 
   if (!dir.exists(outdir)) {

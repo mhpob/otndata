@@ -4,13 +4,10 @@
 \alias{.otn_files}
 \title{Return files associated with an OTN project.}
 \usage{
-.otn_files(project, server = NULL, since = NULL, batch_size = NULL, type)
+.otn_files(project, since = NULL, batch_size = NULL, type)
 }
 \arguments{
 \item{project}{Character. The project code.}
-
-\item{server}{Character. URL of the OTN-style Plone server. Defaults to the
-main OTN server at \url{https://members.oceantrack.org}.}
 
 \item{since}{Character. Filter for files modified since this date
 (YYYY-MM-DD format).}
