@@ -14,6 +14,9 @@
 #' @returns Silently returns a vector of file locations.
 #' @export
 otn_download <- function(files = NULL, url = NULL, outdir = '.') {
+  if (is.null(otn_global$SESSION_TOKEN)) {
+    cli::cli_abort("Please log into the data portal.")
+  }
   if (all(is.null(files), is.null(url))) {
     cli::cli_abort("Please provide one of `files` or `url`.")
   }

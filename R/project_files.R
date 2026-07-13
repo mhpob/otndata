@@ -13,6 +13,9 @@
   batch_size = NULL,
   type
 ) {
+  if (is.null(otn_global$SESSION_TOKEN)) {
+    cli::cli_abort("Please log into the data portal.")
+  }
   # Project codes need to be lower case as we're essentially just matching the url
   project <- tolower(project)
 
