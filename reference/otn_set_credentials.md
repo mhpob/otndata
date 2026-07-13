@@ -9,10 +9,17 @@ MATOS username and password are. So... use this carefully!
 ## Usage
 
 ``` r
-otn_set_credentials(temporary = TRUE, overwrite = FALSE)
+otn_set_credentials(server, temporary = FALSE, overwrite = FALSE)
 ```
 
 ## Arguments
+
+- server:
+
+  Character. Lowercase network code of the desired server. One of "otn",
+  "act", "npact", or "devel" (the OTN development server). Note that
+  "etn", "fact", and "glatos" are accepted, but only to produce an error
+  and redirect you.
 
 - temporary:
 
@@ -20,13 +27,13 @@ otn_set_credentials(temporary = TRUE, overwrite = FALSE)
 
 - overwrite:
 
-  Logical. Overwrite previously-stored MATOS credentials?
+  Logical. Overwrite previously-stored credentials?
 
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
-otn_set_credentials()
+otn_set_credentials("act")
 } # }
 # Yup, that's it!
 ```

@@ -5,7 +5,7 @@ Create summary reports of receiver project data from the OTN data push.
 ## Usage
 
 ``` r
-otn_tag_summary(project = NULL, server = NULL, matched = NULL, ...)
+otn_tag_summary(project = NULL, matched = NULL, ...)
 ```
 
 ## Arguments
@@ -13,11 +13,6 @@ otn_tag_summary(project = NULL, server = NULL, matched = NULL, ...)
 - project:
 
   Project name that you wish to have summarized
-
-- server:
-
-  Character. URL of the OTN-style Plone server. Defaults to the main OTN
-  server at <https://members.oceantrack.org>.
 
 - matched:
 

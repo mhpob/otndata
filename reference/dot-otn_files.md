@@ -5,7 +5,7 @@ Return files associated with an OTN project.
 ## Usage
 
 ``` r
-.otn_files(project, server = NULL, since = NULL, batch_size = NULL, type)
+.otn_files(project, since = NULL, batch_size = NULL, type)
 ```
 
 ## Arguments
@@ -13,11 +13,6 @@ Return files associated with an OTN project.
 - project:
 
   Character. The project code.
-
-- server:
-
-  Character. URL of the OTN-style Plone server. Defaults to the main OTN
-  server at <https://members.oceantrack.org>.
 
 - since:
 

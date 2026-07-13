@@ -78,41 +78,22 @@ data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://otndata.obrien.page">otndata</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     filter, lag</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/" class="external-link">arrow</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'arrow'</span></span>
-<span><span class="co">#&gt; The following object is masked from 'package:utils':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     timestamp</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/" class="external-link">arrow</a></span><span class="op">)</span></span></code></pre></div>
 <p>First, we need to log in. If you have never entered your username and
 password before, you’ll need to do so. Run the following:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_set_credentials.html">otn_set_credentials</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_login.html">otn_login</a></span><span class="op">(</span><span class="st">"act"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Login successful!</span></span></code></pre></div>
 <p>This will just set your credentials for the current R session. If you
-wish to use the same credentials after closing/reopening R, use the
-<code>temporary = FALSE</code> argument:</p>
+wish to use the same credentials after closing/reopening R, use
+<code>otn_set_credentials</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_set_credentials.html">otn_set_credentials</a></span><span class="op">(</span>temporary <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
-<p>Now we can log in:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_login.html">otn_login</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">"act"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✔ Login successful!</span></span>
-<span></span>
-<span><span class="co"># This will also work:</span></span>
-<span><span class="co"># otn_login("act")</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_set_credentials.html">otn_set_credentials</a></span><span class="op">(</span><span class="st">"act"</span><span class="op">)</span></span></code></pre></div>
 <p>What you might first want to do is check out all of the data extract
 files on offer. Make sure you include the server that you’re querying
 (“act”).</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span>project <span class="op">=</span> <span class="st">"tailwinds"</span>, server <span class="op">=</span> <span class="st">"act"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span>project <span class="op">=</span> <span class="st">"tailwinds"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                                            name description</span></span>
 <span><span class="co">#&gt; 1   tailwinds_qualified_detections_2023.parquet            </span></span>
 <span><span class="co">#&gt; 2       tailwinds_qualified_detections_2023.zip            </span></span>
@@ -143,8 +124,8 @@ files on offer. Make sure you include the server that you’re querying
 <p>This can be a lot! We can just grab the files that have been modified
 after a certain date – usually the date just before the most-recent data
 push.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span>project <span class="op">=</span> <span class="st">"tailwinds"</span>, server <span class="op">=</span> <span class="st">"act"</span>, since <span class="op">=</span> <span class="st">"2026-06-12"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span>project <span class="op">=</span> <span class="st">"tailwinds"</span>, since <span class="op">=</span> <span class="st">"2026-06-12"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                                            name description</span></span>
 <span><span class="co">#&gt; 1   tailwinds_qualified_detections_2023.parquet            </span></span>
 <span><span class="co">#&gt; 2       tailwinds_qualified_detections_2023.zip            </span></span>
@@ -176,21 +157,17 @@ push.</p>
 grab the parquet files via <code>otn_extract_files</code>, download them
 with <code>otn_download</code>, and create a mini-database for
 ourselves.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">otn_extract_files</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="at">project =</span> <span class="st">"tailwinds"</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">"act"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="at">since =</span> <span class="st">"2026-06-12"</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"_qualified.*parquet"</span>, name)) <span class="sc">|&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="fu">otn_download</span>(<span class="at">outdir =</span> <span class="st">"./my_awesome_detections"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; ℹ Directory created: ./my_awesome_detections.</span></span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>[working] (<span class="dv">0</span> <span class="sc">+</span> <span class="dv">0</span>) <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="sc">|</span> ■■■■■■■■■■■■■■■■                 …</span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>                                                                </span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>ℹ Files saved to .<span class="sc">/</span>my_awesome_detections<span class="sc">/</span>tailwinds_qualified_detections_2023.parquet and .<span class="sc">/</span>my_awesome_detections<span class="sc">/</span>tailwinds_qualified_detections_2024.parquet.</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span></span>
+<span>  project <span class="op">=</span> <span class="st">"tailwinds"</span>,</span>
+<span>  since <span class="op">=</span> <span class="st">"2026-06-12"</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">filter</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"_qualified.*parquet"</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/otn_download.html">otn_download</a></span><span class="op">(</span>outdir <span class="op">=</span> <span class="st">"./my_awesome_detections"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ℹ Directory created: ./my_awesome_detections.</span></span>
+<span><span class="co">#&gt; ℹ Files saved to ./my_awesome_detections/tailwinds_qualified_detections_2023.parquet and ./my_awesome_detections/tailwinds_qualified_detections_2024.parquet.</span></span></code></pre></div>
 <p>Create a database on the fly using the <a href="https://arrow.apache.org/docs/r" class="external-link">arrow package</a>.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_db</span> <span class="op">&lt;-</span> <span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/open_dataset.html" class="external-link">open_dataset</a></span><span class="op">(</span><span class="st">"my_awesome_detections/"</span><span class="op">)</span></span>
 <span><span class="va">my_db</span></span>
 <span><span class="co">#&gt; FileSystemDataset with 2 Parquet files</span></span>
@@ -221,7 +198,7 @@ ourselves.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; See $metadata for additional Schema metadata</span></span></code></pre></div>
 <p>Now we can do some really quick summaries.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_db</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">group_by</span><span class="op">(</span><span class="va">trackerCode</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">tally</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -242,7 +219,7 @@ ourselves.</p>
 <span><span class="co">#&gt; 10 ACT.MUS4F        246</span></span>
 <span><span class="co">#&gt; # ℹ 48 more rows</span></span></code></pre></div>
 <p>Or find out who we should email and say “hi!”.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_db</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">distinct</span><span class="op">(</span><span class="va">contactPI</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>contactPI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">" \\(.*"</span>, <span class="st">""</span>, <span class="va">contactPI</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -257,9 +234,6 @@ ourselves.</p>
 <span><span class="co">#&gt; 4 Jeff Kneebone   </span></span>
 <span><span class="co">#&gt; 5 Michael Frisk   </span></span>
 <span><span class="co">#&gt; 6 Bradley Peterson</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt;           used  (Mb) gc trigger  (Mb) max used  (Mb)</span></span>
-<span><span class="co">#&gt; Ncells 2203302 117.7    4350370 232.4  2880325 153.9</span></span>
-<span><span class="co">#&gt; Vcells 4488849  34.3   10146329  77.5  7762659  59.3</span></span></code></pre>
   </main>
 </div>
 

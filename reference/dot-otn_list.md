@@ -6,15 +6,17 @@ is not required.
 ## Usage
 
 ``` r
-.otn_list(server = NULL, type)
+.otn_list(server, type)
 ```
 
 ## Arguments
 
 - server:
 
-  Character. URL of the OTN-style Plone server. Defaults to the main OTN
-  server at <https://members.oceantrack.org>.
+  Character. Lowercase network code of the desired server. One of "otn",
+  "act", "npact", or "devel" (the OTN development server). Note that
+  "etn", "fact", and "glatos" are accepted, but only to produce an error
+  and redirect you.
 
 - type:
 

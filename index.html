@@ -249,16 +249,17 @@ Alternative text description
 <span><span class="co">#&gt; 2 https://matos.asascience.com/</span></span>
 <span><span class="co">#&gt; 3 https://matos.asascience.com/</span></span>
 <span><span class="co">#&gt; 4 https://matos.asascience.com/</span></span></code></pre></div>
-<p>You’ll likely need to log in to access other parts of the CMS. You can set your username and password for your system using the <code>otn_set_credentials</code> helper function.</p>
+<p>You’ll need to log in to access other parts of the CMS using <code>otn_login</code>. This package is meant to interface with any node’s Plone instance. You can switch between them using the <code>server</code> argument.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/otn_set_credentials.html">otn_set_credentials</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>After that, you can just log in using <code>otn_login</code>. This package is meant to interface with any node’s Plone instance. You can switch between them using the <code>server</code> argument.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/otn_login.html">otn_login</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">'act'</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Login successful!</span></span></code></pre></div>
+<p>If you don’t wish to enter your username and password every time, you can set the credentials for your system using the <code>otn_set_credentials</code> helper function.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/otn_set_credentials.html">otn_set_credentials</a></span><span class="op">(</span><span class="st">"act"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/otn_login.html">otn_login</a></span><span class="op">(</span><span class="st">"act"</span><span class="op">)</span></span></code></pre></div>
 <p>List your project’s files:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/otn_project_files.html">otn_project_files</a></span><span class="op">(</span>project <span class="op">=</span> <span class="st">'tailwinds'</span>, server <span class="op">=</span> <span class="st">'act'</span>, batch_size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/otn_project_files.html">otn_project_files</a></span><span class="op">(</span>project <span class="op">=</span> <span class="st">'tailwinds'</span>, batch_size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                                            name description</span></span>
 <span><span class="co">#&gt; 1        tailwinds_master_metadata_20240812.csv            </span></span>
 <span><span class="co">#&gt; 2     tailwinds_metadata_deployment_202411.xlsx            </span></span>
@@ -278,7 +279,7 @@ Alternative text description
 <span><span class="co">#&gt; 4 2026-06-10 03:52:30 2026-06-10 03:52:30 krichie  36.7 KB File</span></span>
 <span><span class="co">#&gt; 5 2026-06-10 03:55:34 2026-06-10 03:55:34 krichie 751.0 KB File</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span>project <span class="op">=</span> <span class="st">'tailwinds'</span>, server <span class="op">=</span> <span class="st">'act'</span>, batch_size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span>project <span class="op">=</span> <span class="st">'tailwinds'</span>, batch_size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                                            name description</span></span>
 <span><span class="co">#&gt; 1   tailwinds_qualified_detections_2023.parquet            </span></span>
 <span><span class="co">#&gt; 2       tailwinds_qualified_detections_2023.zip            </span></span>
@@ -302,7 +303,6 @@ Alternative text description
 <code class="sourceCode R"><span><span class="fu"><a href="reference/otn_project_files.html">otn_project_files</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">'tailwinds'</span>,</span>
 <span>  since <span class="op">=</span> <span class="st">"2026-06-01"</span>,</span>
-<span>  server <span class="op">=</span> <span class="st">'act'</span>,</span>
 <span>  batch_size <span class="op">=</span> <span class="fl">5</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt;                                            name description</span></span>
@@ -327,7 +327,6 @@ Alternative text description
 <span><span class="fu"><a href="reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">'tailwinds'</span>,</span>
 <span>  since <span class="op">=</span> <span class="st">"2026-06-01"</span>,</span>
-<span>  server <span class="op">=</span> <span class="st">'act'</span>,</span>
 <span>  batch_size <span class="op">=</span> <span class="fl">5</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt;                                            name description</span></span>
@@ -353,7 +352,6 @@ Alternative text description
 <code class="sourceCode R"><span><span class="fu"><a href="reference/otn_extract_files.html">otn_extract_files</a></span><span class="op">(</span></span>
 <span>  project <span class="op">=</span> <span class="st">'tailwinds'</span>,</span>
 <span>  since <span class="op">=</span> <span class="st">"2026-06-01"</span>,</span>
-<span>  server <span class="op">=</span> <span class="st">'act'</span>,</span>
 <span>  batch_size <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/otn_download.html">otn_download</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -363,6 +361,10 @@ Alternative text description
 <code class="sourceCode R"><span><span class="fu"><a href="reference/otn_download.html">otn_download</a></span><span class="op">(</span></span>
 <span>  url <span class="op">=</span> <span class="st">"https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p>You can create <a href="https://otndo.obrien.page" class="external-link">otndo reports</a> using the <code>otn_receiver_summary</code> and <code>otn_tag_summary</code> helper functions.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/otn_receiver_summary.html">otn_receiver_summary</a></span><span class="op">(</span><span class="st">"tailwinds"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/otn_tag_summary.html">otn_tag_summary</a></span><span class="op">(</span><span class="st">"mdwea"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

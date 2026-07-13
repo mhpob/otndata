@@ -11,9 +11,6 @@
   Installs your OTN username and password in your `.Renviron` file for
   repeated use.
 
-- [`otn_set_server()`](https://otndata.obrien.page/reference/otn_set_server.md)
-  : Set the OTN Plone instance with which you wish to interact.
-
 ## Listing Project and Extract Files
 
 - [`otn_project_files()`](https://otndata.obrien.page/reference/otn_project_files.md)
@@ -70,6 +67,8 @@ add-on installed, so be aware that they may not work.
 
 ## Internals
 
+- [`.otn_server_url()`](https://otndata.obrien.page/reference/dot-otn_server_url.md)
+  : Set the OTN Plone instance with which you wish to interact.
 - [`.otn_api()`](https://otndata.obrien.page/reference/dot-otn_api.md) :
   Call OTN API endpoints.
 - [`.otn_files()`](https://otndata.obrien.page/reference/dot-otn_files.md)

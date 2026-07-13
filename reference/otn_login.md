@@ -7,24 +7,22 @@ project-specific files.
 ## Usage
 
 ``` r
-otn_login(server = NULL, temporary = FALSE)
+otn_login(server = NULL)
 ```
 
 ## Arguments
 
 - server:
 
-  Character. URL of the OTN-style Plone server. Defaults to the main OTN
-  server at <https://members.oceantrack.org>.
-
-- temporary:
-
-  Logical. Provide credentials for the current session only?
+  Character. Lowercase network code of the desired server. One of "otn",
+  "act", "npact", or "devel" (the OTN development server). Note that
+  "etn", "fact", and "glatos" are accepted, but only to produce an error
+  and redirect you.
 
 ## Details
 
 A pop up will appear asking for your username and password. If
-everything works out, a token is written to the "OTN_SESSION_TOKEN"
-system variable. Your username/password will not be saved – this was
-done intentionally so that you don't accidentally save credentials in a
-public script.
+everything works out, a token is written to the "SESSION_TOKEN" variable
+in the `otn_global` environment. Your username/password will not be
+saved – this was done intentionally so that you don't accidentally save
+credentials in a public script.

@@ -5,16 +5,18 @@ Call OTN API endpoints.
 ## Usage
 
 ``` r
-.otn_api(server = "otn", endpoint)
+.otn_api(endpoint, server = otn_global$server)
 ```
 
 ## Arguments
 
-- server:
-
-  Character. URL of the OTN-style Plone server. Defaults to the main OTN
-  server at <https://members.oceantrack.org>.
-
 - endpoint:
 
   Character. API endpoint to call.
+
+- server:
+
+  Character. Lowercase network code of the desired server. One of "otn",
+  "act", "npact", or "devel" (the OTN development server). Note that
+  "etn", "fact", and "glatos" are accepted, but only to produce an error
+  and redirect you.

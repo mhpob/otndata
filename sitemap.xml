@@ -6,11 +6,11 @@
 <url><loc>https://otndata.obrien.page/articles/index.html</loc></url>
 <url><loc>https://otndata.obrien.page/authors.html</loc></url>
 <url><loc>https://otndata.obrien.page/index.html</loc></url>
-<url><loc>https://otndata.obrien.page/reference/check_server.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/dot-otn_api.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/dot-otn_files.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/dot-otn_list.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/dot-otn_search.html</loc></url>
+<url><loc>https://otndata.obrien.page/reference/dot-otn_server_url.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/index.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/otn_download.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/otn_extract_files.html</loc></url>
@@ -30,7 +30,7 @@
 <url><loc>https://otndata.obrien.page/reference/otn_search_node.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/otn_search_species.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/otn_set_credentials.html</loc></url>
-<url><loc>https://otndata.obrien.page/reference/otn_set_server.html</loc></url>
 <url><loc>https://otndata.obrien.page/reference/otn_tag_summary.html</loc></url>
+<url><loc>https://otndata.obrien.page/reference/otndata-package.html</loc></url>
 </urlset>
 

@@ -8,7 +8,7 @@ not a public project.
 ## Usage
 
 ``` r
-otn_project_files(project, server = NULL, since = NULL, batch_size = 25)
+otn_project_files(project, since = NULL, batch_size = 25)
 ```
 
 ## Arguments
@@ -16,11 +16,6 @@ otn_project_files(project, server = NULL, since = NULL, batch_size = 25)
 - project:
 
   Character. The project code.
-
-- server:
-
-  Character. URL of the OTN-style Plone server. Defaults to the main OTN
-  server at <https://members.oceantrack.org>.
 
 - since:
 

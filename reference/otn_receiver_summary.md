@@ -7,7 +7,6 @@ Create summary reports of receiver project data from the OTN data push.
 ``` r
 otn_receiver_summary(
   project = NULL,
-  server = NULL,
   qualified = NULL,
   unqualified = NULL,
   deployment = NULL,
@@ -20,11 +19,6 @@ otn_receiver_summary(
 - project:
 
   Character. The project code.
-
-- server:
-
-  Character. URL of the OTN-style Plone server. Defaults to the main OTN
-  server at <https://members.oceantrack.org>.
 
 - qualified, unqualified:
 

@@ -215,18 +215,9 @@ otn_search_contact("Mike O'Brien")
 #> 4 https://matos.asascience.com/
 ```
 
-You’ll likely need to log in to access other parts of the CMS. You can
-set your username and password for your system using the
-`otn_set_credentials` helper function.
-
-``` r
-
-otn_set_credentials()
-```
-
-After that, you can just log in using `otn_login`. This package is meant
-to interface with any node’s Plone instance. You can switch between them
-using the `server` argument.
+You’ll need to log in to access other parts of the CMS using
+`otn_login`. This package is meant to interface with any node’s Plone
+instance. You can switch between them using the `server` argument.
 
 ``` r
 
@@ -234,11 +225,21 @@ otn_login(server = 'act')
 #> ✔ Login successful!
 ```
 
+If you don’t wish to enter your username and password every time, you
+can set the credentials for your system using the `otn_set_credentials`
+helper function.
+
+``` r
+
+otn_set_credentials("act")
+otn_login("act")
+```
+
 List your project’s files:
 
 ``` r
 
-otn_project_files(project = 'tailwinds', server = 'act', batch_size = 5)
+otn_project_files(project = 'tailwinds', batch_size = 5)
 #>                                            name description
 #> 1        tailwinds_master_metadata_20240812.csv            
 #> 2     tailwinds_metadata_deployment_202411.xlsx            
@@ -258,7 +259,7 @@ otn_project_files(project = 'tailwinds', server = 'act', batch_size = 5)
 #> 4 2026-06-10 03:52:30 2026-06-10 03:52:30 krichie  36.7 KB File
 #> 5 2026-06-10 03:55:34 2026-06-10 03:55:34 krichie 751.0 KB File
 
-otn_extract_files(project = 'tailwinds', server = 'act', batch_size = 5)
+otn_extract_files(project = 'tailwinds', batch_size = 5)
 #>                                            name description
 #> 1   tailwinds_qualified_detections_2023.parquet            
 #> 2       tailwinds_qualified_detections_2023.zip            
@@ -287,7 +288,6 @@ argument:
 otn_project_files(
   project = 'tailwinds',
   since = "2026-06-01",
-  server = 'act',
   batch_size = 5
 )
 #>                                            name description
@@ -312,7 +312,6 @@ otn_project_files(
 otn_extract_files(
   project = 'tailwinds',
   since = "2026-06-01",
-  server = 'act',
   batch_size = 5
 )
 #>                                            name description
@@ -343,7 +342,6 @@ computer:
 otn_extract_files(
   project = 'tailwinds',
   since = "2026-06-01",
-  server = 'act',
   batch_size = 1
 ) |>
   otn_download()
@@ -357,4 +355,13 @@ Or download directly via its URL:
 otn_download(
   url = "https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"
 )
+```
+
+You can create [otndo reports](https://otndo.obrien.page) using the
+`otn_receiver_summary` and `otn_tag_summary` helper functions.
+
+``` r
+
+otn_receiver_summary("tailwinds")
+otn_tag_summary("mdwea")
 ```
