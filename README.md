@@ -16,9 +16,15 @@ appreciated](https://github.com/trackyverse/otndata/issues)!!
 
 - [Atlantic Cooperative Telemetry Network
   (ACT)](https://data.theactnetwork.com)
+- [Integrated Tracking of Aquatic Animals in the Gulf
+  (iTAG)](https://data.itagscience.com)
 - [Northeast Pacific Acoustic Telemetry Network
-  (N-PACT)](https://plone.npact.aoos.org)
-- [Ocean Tracking Network (OTN)](https://members.oceantrack.org)
+  (N-PAcT)](https://plone.npact.aoos.org)
+- [Ocean Tracking Network (OTN)](https://members.oceantrack.org), which
+  also includes:
+  - Acoustic Tracking Array Platform (ATAP)
+  - MigraMar
+  - Northeast Pacific (NEP)
 - [Ocean Tracking Network’s development
   server](https://members.devel.oceantrack.org)
 - [Pacific Islands Region Acoustic Telemetry Network
@@ -32,13 +38,15 @@ The following networks are not supported for various reasons:
 - [European Tracking Network (ETN)](https://www.lifewatch.be/etn): ETN
   does not use a Plone CMS; see the [etn R
   package](https://inbo.github.io/etn) for programmatic access.
-- [FACT](https://secoora.org/fact): FACT does not use a Plone CMS or
-  have a tool for programmatic access to their data portal.
 - [Great Lakes Acoustic Telemetry Observing System
   (GLATOS)](https://glatos.org/portal): GLATOS does not use a Plone CMS
   or have a tool for programmatic access to their data portal; see the
   [glatos R package](https://github.com/ocean-tracking-network/glatos)
   for data import, visualization, and analysis tools.
+- [FACT](https://secoora.org/fact) and the [Riverine Acoustic Fish
+  Telemetry Network (RAFT)](https://umesc-gisdb03.er.usgs.gov/raft) do
+  not use a Plone CMS or have a tool for programmatic access to their
+  data portal.
 
 ## Installation
 

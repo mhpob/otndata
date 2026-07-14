@@ -57,7 +57,7 @@
         "PATH does not have the Plone REST API activated.",
         "Work on this front is ongoing, so try again in a few months!"
       )
-    ), # path = "https://fishdb.wfcb.ucdavis.edu",
+    ),
     raft = cli::cli_abort("RAFT does not use an OTN-style Plone CMS.")
   )
 

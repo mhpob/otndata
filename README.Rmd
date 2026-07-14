@@ -21,8 +21,12 @@ knitr::opts_chunk$set(
 `otndata` is a wrapper around the Ocean Tracking Network's Plone content management system. The following data portals are nominally supported, though some things might not work depending on the optional add-ons used by the various networks. Because of this, [bug reports are really, really, _really_ appreciated](https://github.com/trackyverse/otndata/issues)!!
 
   - [Atlantic Cooperative Telemetry Network (ACT)](https://data.theactnetwork.com)
-  - [Northeast Pacific Acoustic Telemetry Network (N-PACT)](https://plone.npact.aoos.org) 
-  - [Ocean Tracking Network (OTN)](https://members.oceantrack.org)
+  - [Integrated Tracking of Aquatic Animals in the Gulf (iTAG)](https://data.itagscience.com)
+  - [Northeast Pacific Acoustic Telemetry Network (N-PAcT)](https://plone.npact.aoos.org) 
+  - [Ocean Tracking Network (OTN)](https://members.oceantrack.org), which also includes:
+    - Acoustic Tracking Array Platform (ATAP)
+    - MigraMar
+    - Northeast Pacific (NEP)
   - [Ocean Tracking Network's development server](https://members.devel.oceantrack.org)
   - [Pacific Islands Region Acoustic Telemetry Network (PIRAT)](https://piratnetwork.org)
 
@@ -30,8 +34,8 @@ The following networks are not supported for various reasons:
 
   - [Pacific Aquatic Telemetry Hub (PATH)](https://fishdb.wfcb.ucdavis.edu): PATH will be supported following an update to their version of Plone in the next few months.
   - [European Tracking Network (ETN)](https://www.lifewatch.be/etn): ETN does not use a Plone CMS; see the [etn R package](https://inbo.github.io/etn) for programmatic access.
-  - [FACT](https://secoora.org/fact): FACT does not use a Plone CMS or have a tool for programmatic access to their data portal.
   - [Great Lakes Acoustic Telemetry Observing System (GLATOS)](https://glatos.org/portal): GLATOS does not use a Plone CMS or have a tool for programmatic access to their data portal; see the [glatos R package](https://github.com/ocean-tracking-network/glatos) for data import, visualization, and analysis tools.
+  - [FACT](https://secoora.org/fact) and the [Riverine Acoustic Fish Telemetry Network (RAFT)](https://umesc-gisdb03.er.usgs.gov/raft) do not use a Plone CMS or have a tool for programmatic access to their data portal.
 
 ## Installation
 
