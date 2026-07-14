@@ -6,20 +6,22 @@ Set the OTN Plone instance with which you wish to interact.
 
 ``` r
 .otn_server_url(
-  server = c("otn", "act", "npact", "pirat", "path", "devel", "etn", "fact", "glatos"),
+  network = c("otn", "act", "atap", "itag", "migramar", "nep", "npact", "pirat",
+    "otn_devel", "etn", "fact", "glatos", "path", "raft"),
   set = TRUE
 )
 ```
 
 ## Arguments
 
-- server:
+- network:
 
-  Character. Lowercase network code of the desired server. One of "otn",
-  "act", "npact", or "devel" (the OTN development server). Note that
-  "etn", "fact", and "glatos" are accepted, but only to produce an error
+  Character. Lowercase code of the desired telemetry network. One of
+  "otn", "act", "atap", "itag", "migramar", "nep", "npact", "pirat", or
+  "otn_devel" (the OTN development server). Note that "etn", "fact",
+  "glatos", "path" and "raft" are accepted, but only to produce an error
   and redirect you.
 
 - set:
 
-  Set the server url in the `otn_global` environment?
+  Set the network in the current session?

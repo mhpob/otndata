@@ -7,7 +7,20 @@ in. Hooray!! Let’s walk through how to interact with all of your data.
 
 library(otndata)
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 library(arrow)
+#> 
+#> Attaching package: 'arrow'
+#> The following object is masked from 'package:utils':
+#> 
+#>     timestamp
 ```
 
 First, we need to log in. If you have never entered your username and
@@ -29,8 +42,7 @@ otn_set_credentials("act")
 ```
 
 What you might first want to do is check out all of the data extract
-files on offer. Make sure you include the server that you’re querying
-(“act”).
+files on offer.
 
 ``` r
 

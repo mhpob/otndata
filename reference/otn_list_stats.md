@@ -1,18 +1,19 @@
-# Retrieve OTN server statistics.
+# Retrieve OTN network statistics.
 
-Retrieve OTN server statistics.
+Retrieve OTN network statistics.
 
 ## Usage
 
 ``` r
-otn_list_stats(server = "otn")
+otn_list_stats(network = "otn")
 ```
 
 ## Arguments
 
-- server:
+- network:
 
-  Character. Lowercase network code of the desired server. One of "otn",
-  "act", "npact", or "devel" (the OTN development server). Note that
-  "etn", "fact", and "glatos" are accepted, but only to produce an error
+  Character. Lowercase code of the desired telemetry network. One of
+  "otn", "act", "atap", "itag", "migramar", "nep", "npact", "pirat", or
+  "otn_devel" (the OTN development server). Note that "etn", "fact",
+  "glatos", "path" and "raft" are accepted, but only to produce an error
   and redirect you.

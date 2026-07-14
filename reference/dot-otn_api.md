@@ -5,7 +5,7 @@ Call OTN API endpoints.
 ## Usage
 
 ``` r
-.otn_api(endpoint, server = otn_global$server)
+.otn_api(endpoint, server = otn_global$server_url)
 ```
 
 ## Arguments
@@ -16,7 +16,4 @@ Call OTN API endpoints.
 
 - server:
 
-  Character. Lowercase network code of the desired server. One of "otn",
-  "act", "npact", or "devel" (the OTN development server). Note that
-  "etn", "fact", and "glatos" are accepted, but only to produce an error
-  and redirect you.
+  URL of the network's Plone CMS

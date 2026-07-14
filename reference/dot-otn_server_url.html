@@ -49,7 +49,8 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.otn_server_url</span><span class="op">(</span></span>
-<span>  server <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"otn"</span>, <span class="st">"act"</span>, <span class="st">"npact"</span>, <span class="st">"pirat"</span>, <span class="st">"path"</span>, <span class="st">"devel"</span>, <span class="st">"etn"</span>, <span class="st">"fact"</span>, <span class="st">"glatos"</span><span class="op">)</span>,</span>
+<span>  network <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"otn"</span>, <span class="st">"act"</span>, <span class="st">"atap"</span>, <span class="st">"itag"</span>, <span class="st">"migramar"</span>, <span class="st">"nep"</span>, <span class="st">"npact"</span>, <span class="st">"pirat"</span>,</span>
+<span>    <span class="st">"otn_devel"</span>, <span class="st">"etn"</span>, <span class="st">"fact"</span>, <span class="st">"glatos"</span>, <span class="st">"path"</span>, <span class="st">"raft"</span><span class="op">)</span>,</span>
 <span>  set <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -58,14 +59,15 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-server">server<a class="anchor" aria-label="anchor" href="#arg-server"></a></dt>
-<dd><p>Character. Lowercase network code of the desired server. One of
-"otn", "act", "npact", or "devel" (the OTN development server). Note that
-"etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.</p></dd>
+<dl><dt id="arg-network">network<a class="anchor" aria-label="anchor" href="#arg-network"></a></dt>
+<dd><p>Character. Lowercase code of the desired telemetry network. One of
+"otn", "act", "atap", "itag", "migramar", "nep", "npact", "pirat", or
+"otn_devel" (the OTN development server). Note that "etn", "fact", "glatos",
+"path" and "raft" are accepted, but only to produce an error and redirect you.</p></dd>
 
 
 <dt id="arg-set">set<a class="anchor" aria-label="anchor" href="#arg-set"></a></dt>
-<dd><p>Set the server url in the <code>otn_global</code> environment?</p></dd>
+<dd><p>Set the network in the current session?</p></dd>
 
 </dl></div>
 

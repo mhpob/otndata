@@ -113,7 +113,7 @@ Alternative text description
 <span><span class="co">#&gt; 6   Acanthurus coeruleus            blue tang</span></span>
 <span></span>
 <span><span class="co"># Try a different server</span></span>
-<span><span class="fu"><a href="reference/otn_list_projects.html">otn_list_projects</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">"act"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu"><a href="reference/otn_list_projects.html">otn_list_projects</a></span><span class="op">(</span>network <span class="op">=</span> <span class="st">"act"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   node collectioncode country longitude latitude</span></span>
 <span><span class="co">#&gt; 1  ACT        RUSHARK     USA  -73.8185  38.0705</span></span>
@@ -158,7 +158,7 @@ Alternative text description
 <span><span class="co">#&gt; 5 Rhode Island Department of Environmental Management, Division of Marine Fisheries</span></span>
 <span><span class="co">#&gt; 6                      Rutgers University Department of Marine and Coastal Sciences</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/otn_list_stats.html">otn_list_stats</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">"devel"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/otn_list_stats.html">otn_list_stats</a></span><span class="op">(</span>network <span class="op">=</span> <span class="st">"otn_devel"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $project_count</span></span>
 <span><span class="co">#&gt; [1] 1662</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -249,9 +249,9 @@ Alternative text description
 <span><span class="co">#&gt; 2 https://matos.asascience.com/</span></span>
 <span><span class="co">#&gt; 3 https://matos.asascience.com/</span></span>
 <span><span class="co">#&gt; 4 https://matos.asascience.com/</span></span></code></pre></div>
-<p>You’ll need to log in to access other parts of the CMS using <code>otn_login</code>. This package is meant to interface with any node’s Plone instance. You can switch between them using the <code>server</code> argument.</p>
+<p>You’ll need to log in to access other parts of the CMS using <code>otn_login</code>. This package is meant to interface with any node’s Plone instance. You can switch between them using the <code>network</code> argument.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/otn_login.html">otn_login</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">'act'</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/otn_login.html">otn_login</a></span><span class="op">(</span>network <span class="op">=</span> <span class="st">'act'</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Login successful!</span></span></code></pre></div>
 <p>If you don’t wish to enter your username and password every time, you can set the credentials for your system using the <code>otn_set_credentials</code> helper function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">

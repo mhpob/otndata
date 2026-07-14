@@ -63,7 +63,7 @@ add-on installed, so be aware that they may not work.
 - [`otn_list_species()`](https://otndata.obrien.page/reference/otn_list_species.md)
   : Retrieve OTN species list.
 - [`otn_list_stats()`](https://otndata.obrien.page/reference/otn_list_stats.md)
-  : Retrieve OTN server statistics.
+  : Retrieve OTN network statistics.
 
 ## Internals
 
