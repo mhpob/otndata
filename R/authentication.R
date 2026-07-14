@@ -9,28 +9,27 @@
 #' Your username/password will not be saved -- this was done intentionally so
 #' that you don't accidentally save credentials in a public script.
 #'
-#' @inheritParams .otn_api
 #' @inheritParams .otn_server_url
 #'
 #' @export
 
 otn_login <- function(
-  server = NULL
+  network = NULL
 ) {
-  .otn_server_url(server)
+  .otn_server_url(network)
 
   creds <- c(
-    login = Sys.getenv(paste("OTN_USER", server, sep = ".")),
-    pass = Sys.getenv(paste("OTN_PASS", server, sep = "."))
+    login = Sys.getenv(paste("OTN_USER", network, sep = ".")),
+    pass = Sys.getenv(paste("OTN_PASS", network, sep = "."))
   )
 
   if (any(creds == "")) {
     cli::cli_alert_warning("Credentials missing")
-    otn_set_credentials(server, temporary = TRUE)
+    otn_set_credentials(network, temporary = TRUE)
 
     creds <- c(
-      login = otn_global[[paste("OTN_USER", server, sep = ".")]],
-      pass = otn_global[[paste("OTN_PASS", server, sep = ".")]]
+      login = otn_global[[paste("OTN_USER", network, sep = ".")]],
+      pass = otn_global[[paste("OTN_PASS", network, sep = ".")]]
     )
   }
 
@@ -70,14 +69,14 @@ otn_login <- function(
 #' otn_set_credentials("act")
 #' }
 #' # Yup, that's it!
-otn_set_credentials <- function(server, temporary = FALSE, overwrite = FALSE) {
+otn_set_credentials <- function(network, temporary = FALSE, overwrite = FALSE) {
   username <- askpass::askpass("Username: ")
   password <- askpass::askpass("Password: ")
 
   if (isTRUE(temporary)) {
     # Write to otn_global environment
-    otn_global[[paste("OTN_USER", server, sep = ".")]] <- username
-    otn_global[[paste("OTN_PASS", server, sep = ".")]] <- password
+    otn_global[[paste("OTN_USER", network, sep = ".")]] <- username
+    otn_global[[paste("OTN_PASS", network, sep = ".")]] <- password
   } else {
     home <- Sys.getenv("HOME")
     renv_path <- file.path(home, ".Renviron")
@@ -90,8 +89,8 @@ otn_set_credentials <- function(server, temporary = FALSE, overwrite = FALSE) {
 
     if (
       any(
-        grepl(paste0("OTN.*", server), renv),
-        grepl(paste0("OTN.*", server), Sys.getenv())
+        grepl(paste0("OTN.*", network), renv),
+        grepl(paste0("OTN.*", network), Sys.getenv())
       ) &&
         overwrite == F
     ) {
@@ -103,13 +102,13 @@ otn_set_credentials <- function(server, temporary = FALSE, overwrite = FALSE) {
 
     # Append credentials to .Renviron file
     write(
-      paste0("OTN_USER.", server, "='", username, "'"),
+      paste0("OTN_USER.", network, "='", username, "'"),
       renv_path,
       sep = "\n",
       append = TRUE
     )
     write(
-      paste0("OTN_PASS.", server, "='", password, "'"),
+      paste0("OTN_PASS.", network, "='", password, "'"),
       renv_path,
       sep = "\n",
       append = TRUE
@@ -117,8 +116,8 @@ otn_set_credentials <- function(server, temporary = FALSE, overwrite = FALSE) {
 
     cli::cli_alert_info(
       'Your OTN credentials have been stored in your .Renviron and can be accessed
-      by Sys.getenv("OTN_USER") or Sys.getenv("OTN_PASS"). \nTo use now, restart
-      R or run `readRenviron("~/.Renviron")`.'
+      by Sys.getenv("OTN_USER.{network code}") or Sys.getenv("OTN_PASS.{network code}").
+      \nTo use now, restart R or run `readRenviron("~/.Renviron")`.'
     )
   }
 }

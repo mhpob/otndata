@@ -4,10 +4,10 @@
 #'   not required.
 #'
 #' @param type Character. Internal data base to retrieve.
-#' @inheritParams .otn_api
+#' @inheritParams .otn_server_url network
 #'
 #' @keywords internal
-.otn_list <- function(server, type) {
+.otn_list <- function(network, type) {
   endpoint <- switch(
     type,
     contacts = "all_contacts.json",
@@ -19,7 +19,7 @@
   )
 
   endpoint |>
-    .otn_api(server = .otn_server_url(server, set = FALSE)) |>
+    .otn_api(server = .otn_server_url(network, set = FALSE)) |>
     httr2::req_perform() |>
     httr2::resp_body_json(simplifyVector = TRUE)
 }
@@ -28,46 +28,46 @@
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_contacts <- function(server = "otn") {
-  .otn_list(server, "contacts")
+otn_list_contacts <- function(network = "otn") {
+  .otn_list(network, "contacts")
 }
 
 #' Retrieve OTN country list.
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_countries <- function(server = "otn") {
-  .otn_list(server, "countries")
+otn_list_countries <- function(network = "otn") {
+  .otn_list(network, "countries")
 }
 
 #' Retrieve OTN species list.
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_species <- function(server = "otn") {
-  .otn_list(server, "species")
+otn_list_species <- function(network = "otn") {
+  .otn_list(network, "species")
 }
 
 #' Retrieve OTN institution list.
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_institutions <- function(server = "otn") {
-  .otn_list(server, "institutions")
+otn_list_institutions <- function(network = "otn") {
+  .otn_list(network, "institutions")
 }
 
 #' Retrieve OTN project list.
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_projects <- function(server = "otn") {
-  .otn_list(server, "projects")
+otn_list_projects <- function(network = "otn") {
+  .otn_list(network, "projects")
 }
 
-#' Retrieve OTN server statistics.
+#' Retrieve OTN network statistics.
 #'
 #' @inheritParams .otn_list
 #' @export
-otn_list_stats <- function(server = "otn") {
-  .otn_list(server, "stats")
+otn_list_stats <- function(network = "otn") {
+  .otn_list(network, "stats")
 }

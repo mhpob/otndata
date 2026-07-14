@@ -1,10 +1,10 @@
 #' Call OTN API endpoints.
 #'
 #' @param endpoint Character. API endpoint to call.
-#' @inheritParams .otn_server_url
+#' @param server URL of the network's Plone CMS
 #'
 #' @keywords internal
-.otn_api <- function(endpoint, server = otn_global$server) {
+.otn_api <- function(endpoint, server = otn_global$server_url) {
   server |>
     httr2::request() |>
     httr2::req_url_path_append("++api++") |>

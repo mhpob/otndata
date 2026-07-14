@@ -34,8 +34,7 @@ This will just set your credentials for the current R session. If you wish to us
 otn_set_credentials("act")
 ```
 
-What you might first want to do is check out all of the data extract files on offer. Make sure you include the server that you're querying ("act").
-
+What you might first want to do is check out all of the data extract files on offer.
 
 ```{r}
 otn_extract_files(project = "tailwinds")
@@ -87,7 +86,7 @@ my_db |>
 ```
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
 # Clean up the folder made above
 rm(my_db)
 gc(verbose = FALSE)

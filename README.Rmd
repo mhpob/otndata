@@ -58,10 +58,10 @@ otn_list_species() |>
   head()
 
 # Try a different server
-otn_list_projects(server = "act") |>
+otn_list_projects(network = "act") |>
   head()
 
-otn_list_stats(server = "devel")
+otn_list_stats(network = "otn_devel")
 ```
 
 You can also query projects according to code, country of origin, species, institution, node, or point of contact.
@@ -78,10 +78,10 @@ otn_search_contact("Mike O'Brien")
 ```
 
 
-You'll need to log in to access other parts of the CMS using `otn_login`. This package is meant to interface with any node's Plone instance. You can switch between them using the `server` argument.
+You'll need to log in to access other parts of the CMS using `otn_login`. This package is meant to interface with any node's Plone instance. You can switch between them using the `network` argument.
 
 ```{r login}
-otn_login(server = 'act')
+otn_login(network = 'act')
 ```
 
  If you don't wish to enter your username and password every time, you can set the credentials for your system using the `otn_set_credentials` helper function.

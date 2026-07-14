@@ -15,7 +15,20 @@ You've just received notifications that your ACT Network tag matches are in. Hoo
 ``` r
 library(otndata)
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 library(arrow)
+#> 
+#> Attaching package: 'arrow'
+#> The following object is masked from 'package:utils':
+#> 
+#>     timestamp
 ```
 
 First, we need to log in. If you have never entered your username and password before, you'll need to do so. Run the following:
@@ -33,8 +46,7 @@ This will just set your credentials for the current R session. If you wish to us
 otn_set_credentials("act")
 ```
 
-What you might first want to do is check out all of the data extract files on offer. Make sure you include the server that you're querying ("act").
-
+What you might first want to do is check out all of the data extract files on offer.
 
 
 ``` r

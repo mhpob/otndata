@@ -79,7 +79,7 @@ otn_list_species() |>
 #> 6   Acanthurus coeruleus            blue tang
 
 # Try a different server
-otn_list_projects(server = "act") |>
+otn_list_projects(network = "act") |>
   head()
 #>   node collectioncode country longitude latitude
 #> 1  ACT        RUSHARK     USA  -73.8185  38.0705
@@ -124,7 +124,7 @@ otn_list_projects(server = "act") |>
 #> 5 Rhode Island Department of Environmental Management, Division of Marine Fisheries
 #> 6                      Rutgers University Department of Marine and Coastal Sciences
 
-otn_list_stats(server = "devel")
+otn_list_stats(network = "otn_devel")
 #> $project_count
 #> [1] 1662
 #> 
@@ -223,10 +223,10 @@ otn_search_contact("Mike O'Brien")
 
 You’ll need to log in to access other parts of the CMS using
 `otn_login`. This package is meant to interface with any node’s Plone
-instance. You can switch between them using the `server` argument.
+instance. You can switch between them using the `network` argument.
 
 ``` r
-otn_login(server = 'act')
+otn_login(network = 'act')
 #> ✔ Login successful!
 ```
 

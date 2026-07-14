@@ -19,6 +19,12 @@
   # Project codes need to be lower case as we're essentially just matching the url
   project <- tolower(project)
 
+  # ATAP (formerly SAF), MigraMar, and NEP data are hosted on the OTN instance under
+  # /data/repository/{network}/{project}
+  if (otn_global$network %in% c("migramar", "nep", "saf")) {
+    project <- paste(otn_global$network, project, sep = "/")
+  }
+
   project_endpoint <- paste(
     "/data/repository",
     project,

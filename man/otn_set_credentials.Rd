@@ -4,12 +4,13 @@
 \alias{otn_set_credentials}
 \title{Installs your OTN username and password in your \code{.Renviron} file for repeated use.}
 \usage{
-otn_set_credentials(server, temporary = FALSE, overwrite = FALSE)
+otn_set_credentials(network, temporary = FALSE, overwrite = FALSE)
 }
 \arguments{
-\item{server}{Character. Lowercase network code of the desired server. One of
-"otn", "act", "npact", or "devel" (the OTN development server). Note that
-"etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.}
+\item{network}{Character. Lowercase code of the desired telemetry network. One of
+"otn", "act", "atap", "itag", "migramar", "nep", "npact", "pirat", or
+"otn_devel" (the OTN development server). Note that "etn", "fact", "glatos",
+"path" and "raft" are accepted, but only to produce an error and redirect you.}
 
 \item{temporary}{Logical. Scrub credentials after the current session?}
 

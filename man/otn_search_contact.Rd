@@ -4,14 +4,10 @@
 \alias{otn_search_contact}
 \title{Search OTN database by project contact.}
 \usage{
-otn_search_contact(contact, server = "otn")
+otn_search_contact(contact, network = "otn")
 }
 \arguments{
 \item{contact}{Character. Project contact for which to search. DOES NOT support partial matching.}
-
-\item{server}{Character. Lowercase network code of the desired server. One of
-"otn", "act", "npact", or "devel" (the OTN development server). Note that
-"etn", "fact", and "glatos" are accepted, but only to produce an error and redirect you.}
 }
 \description{
 Search OTN database by project contact.
