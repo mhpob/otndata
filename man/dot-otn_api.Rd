@@ -14,4 +14,7 @@
 \description{
 Call OTN API endpoints.
 }
+\seealso{
+\href{https://6.docs.plone.org/plone.restapi/docs/source/endpoints}{Plone REST API endpoints}
+}
 \keyword{internal}

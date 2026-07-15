@@ -20,4 +20,16 @@ to return.}
 \description{
 Return files associated with an OTN project.
 }
+\seealso{
+\itemize{
+\item Plone REST API documentation:
+\itemize{
+\item \href{https://6.docs.plone.org/plone.restapi/docs/source/endpoints/querystringsearch.html}{Querystring Search},
+triggered when using the "\code{since}" argument.
+\href{https://6.docs.plone.org/plone.restapi/docs/source/endpoints/querystring.html}{Query operations are listed here.}.
+\item \href{https://6.docs.plone.org/plone.restapi/docs/source/endpoints/searching.html}{Search},
+a simpler search used when the "\code{since}" argument is NULL.
+}
+}
+}
 \keyword{internal}

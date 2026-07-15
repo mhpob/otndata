@@ -19,6 +19,14 @@ Defaults to the current working directory.}
 }
 \value{
 Silently returns a vector of file locations.
+
+#' @seealso
+\itemize{
+\item Plone REST API documentation:
+\itemize{
+\item \href{https://6.docs.plone.org/plone.restapi/docs/source/usage/serialization.html#download-serialization}{Serialization}
+}
+}
 }
 \description{
 Either \code{files} or \code{url} must be provided. If \code{files} is provided, files in

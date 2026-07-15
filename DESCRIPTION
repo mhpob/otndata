@@ -1,17 +1,18 @@
 Package: otndata
-Title: Access Ocean Tracking Network Data
+Title: Access Acoustic Telemetry Data on Plone Content Management Systems
 Version: 0.0.0.9000
 Authors@R: 
     person("Michael", "O'Brien", email = "mike@obrien.page",
     role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1420-6395"))
-Description: An R API to access data from the Ocean Tracking Network (OTN)
-  database.
+Description: An R API to interface with the Plone REST API of Ocean Tracking
+  Network (OTN)-affiliated data portals.
 License: MIT + file LICENSE
 Depends: R (>= 4.3.0)
 Imports:
   askpass,
   cli,
   httr2,
+  mime,
   otndo,
   rlang
 Suggests: 
@@ -28,3 +29,4 @@ URL: https://otndata.obrien.page, https://github.com/trackyverse/otndata
 BugReports: https://github.com/trackyverse/otndata/issues
 Config/roxygen2/version: 8.0.0
 VignetteBuilder: knitr
+RoxygenNote: 8.0.0

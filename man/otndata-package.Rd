@@ -4,9 +4,9 @@
 \name{otndata-package}
 \alias{otndata}
 \alias{otndata-package}
-\title{otndata: Access Ocean Tracking Network Data}
+\title{otndata: Access Acoustic Telemetry Data on Plone Content Management Systems}
 \description{
-An R API to access data from the Ocean Tracking Network (OTN) database.
+An R API to interface with the Plone REST API of Ocean Tracking Network (OTN)-affiliated data portals.
 }
 \seealso{
 Useful links:

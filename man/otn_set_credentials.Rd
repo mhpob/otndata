@@ -17,7 +17,10 @@ otn_set_credentials(network, temporary = FALSE, overwrite = FALSE)
 \item{overwrite}{Logical. Overwrite previously-stored credentials?}
 }
 \description{
-This code was adapted from \href{https://github.com/walkerke/tidycensus/blob/ddb33b5f72734a4ff14332bd55cbac4850688600/R/helpers.R}{\code{tidycensus::census_api_key}}. Note that this saves your credentials in your .Renviron, meaning that anyone who is using your computer can theoretically access what your MATOS username and password are. So... use this carefully!
+This code was adapted from \href{https://github.com/walkerke/tidycensus/blob/ddb33b5f72734a4ff14332bd55cbac4850688600/R/helpers.R}{\code{tidycensus::census_api_key}}.
+Note that this saves your credentials in your .Renviron, meaning that anyone
+who is using your computer can theoretically access your username and password.
+So... use this carefully!
 }
 \examples{
 \dontrun{

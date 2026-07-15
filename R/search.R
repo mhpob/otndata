@@ -2,7 +2,7 @@
 #'
 #' @param type Character. Internal data base to search.
 #' @param search_term Character. Search term to use.
-#' @inheritParams .otn_api
+#' @inheritParams .otn_server_url network
 #' @keywords internal
 .otn_search <- function(network, type, search_term) {
   `:=` <- NULL

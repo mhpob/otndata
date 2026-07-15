@@ -20,3 +20,6 @@ project files -- basically everything you see in the \emph{Data and Metadata}
 section of your project page. You will be prompted to log in if it is not a
 public project.
 }
+\seealso{
+\link{.otn_files}
+}

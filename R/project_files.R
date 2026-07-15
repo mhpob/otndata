@@ -7,6 +7,13 @@
 #' @param type Character. Portion of the URL representing the data type you wish
 #'   to return.
 #' @keywords internal
+#' @seealso
+#'  * Plone REST API documentation:
+#'    * [Querystring Search](https://6.docs.plone.org/plone.restapi/docs/source/endpoints/querystringsearch.html),
+#'      triggered when using the "`since`" argument.
+#'      [Query operations are listed here.](https://6.docs.plone.org/plone.restapi/docs/source/endpoints/querystring.html).
+#'    * [Search](https://6.docs.plone.org/plone.restapi/docs/source/endpoints/searching.html),
+#'      a simpler search used when the "`since`" argument is NULL.
 .otn_files <- function(
   project,
   since = NULL,
@@ -16,18 +23,10 @@
   if (is.null(otn_global$SESSION_TOKEN)) {
     cli::cli_abort("Please log into the data portal.")
   }
-  # Project codes need to be lower case as we're essentially just matching the url
-  project <- tolower(project)
-
-  # ATAP (formerly SAF), MigraMar, and NEP data are hosted on the OTN instance under
-  # /data/repository/{network}/{project}
-  if (otn_global$network %in% c("migramar", "nep", "saf")) {
-    project <- paste(otn_global$network, project, sep = "/")
-  }
 
   project_endpoint <- paste(
     "/data/repository",
-    project,
+    build_namespace(project),
     type,
     ifelse(is.null(since), "@search", "@querystring-search"),
     sep = "/"
@@ -153,6 +152,7 @@
 #' public project.
 #'
 #' @inheritParams .otn_files
+#' @seealso [.otn_files]
 #' @export
 otn_project_files <- function(
   project,
@@ -173,6 +173,7 @@ otn_project_files <- function(
 #' your project.
 #'
 #' @inheritParams .otn_files
+#' @seealso [.otn_files]
 #' @export
 otn_extract_files <- function(
   project,

@@ -23,3 +23,12 @@ out, a token is written to the "SESSION_TOKEN" variable in the \code{otn_global}
 Your username/password will not be saved -- this was done intentionally so
 that you don't accidentally save credentials in a public script.
 }
+\seealso{
+\itemize{
+\item \link{otn_set_credentials}
+\item Plone REST API documentation:
+\itemize{
+\item \href{https://6.docs.plone.org/plone.restapi/docs/source/usage/authentication.html}{Authentication}
+}
+}
+}

@@ -10,7 +10,10 @@
 #' that you don't accidentally save credentials in a public script.
 #'
 #' @inheritParams .otn_server_url
-#'
+#' @seealso
+#'  * [otn_set_credentials]
+#'  * Plone REST API documentation:
+#'    * [Authentication](https://6.docs.plone.org/plone.restapi/docs/source/usage/authentication.html)
 #' @export
 
 otn_login <- function(
@@ -57,7 +60,11 @@ otn_login <- function(
 
 #' Installs your OTN username and password in your \code{.Renviron} file for repeated use.
 #'
-#' @description This code was adapted from \href{https://github.com/walkerke/tidycensus/blob/ddb33b5f72734a4ff14332bd55cbac4850688600/R/helpers.R}{\code{tidycensus::census_api_key}}. Note that this saves your credentials in your .Renviron, meaning that anyone who is using your computer can theoretically access what your MATOS username and password are. So... use this carefully!
+#' @description
+#'   This code was adapted from \href{https://github.com/walkerke/tidycensus/blob/ddb33b5f72734a4ff14332bd55cbac4850688600/R/helpers.R}{\code{tidycensus::census_api_key}}.
+#'   Note that this saves your credentials in your .Renviron, meaning that anyone
+#'   who is using your computer can theoretically access your username and password.
+#'   So... use this carefully!
 #'
 #' @param temporary Logical. Scrub credentials after the current session?
 #' @param overwrite Logical. Overwrite previously-stored credentials?

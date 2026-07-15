@@ -18,3 +18,6 @@ otn_extract_files(project, since = NULL, batch_size = 25)
 This function recursively lists files in the \emph{Detection Extracts} section of
 your project.
 }
+\seealso{
+\link{.otn_files}
+}

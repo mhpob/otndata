@@ -4,6 +4,7 @@
 #' @param server URL of the network's Plone CMS
 #'
 #' @keywords internal
+#' @seealso [Plone REST API endpoints](https://6.docs.plone.org/plone.restapi/docs/source/endpoints)
 .otn_api <- function(endpoint, server = otn_global$server_url) {
   server |>
     httr2::request() |>
