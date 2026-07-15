@@ -46,11 +46,11 @@ You can install the development version of otndata from [GitHub](https://github.
 pak::pak("trackyverse/otndata")
 ```
 
-## Example
+## Search project metadata
 
 There are a few things that can be accessed without logging in. Most nodes come pre-baked with a statistics widget and a project map:
 
-![Alternative text description](man/figures/README-widget.png)
+![](man/figures/README-widget.png)
 
 If this widget is enabled, you can access the information shown without needing to log in.
 
@@ -81,6 +81,7 @@ otn_search_code("tail")
 otn_search_contact("Mike O'Brien")
 ```
 
+## Logging in
 
 You'll need to log in to access other parts of the CMS using `otn_login`. This package is meant to interface with any node's Plone instance. You can switch between them using the `network` argument.
 
@@ -95,6 +96,7 @@ otn_set_credentials("act")
 otn_login("act")
 ```
 
+## Listing project files
 
 List your project's files:
 
@@ -119,6 +121,8 @@ otn_extract_files(
 )
 ```
 
+## Download files
+
 You can pipe this list into `otn_download` to save the files to your computer:
 
 ```{r}
@@ -137,7 +141,16 @@ otn_download(
 )
 ```
 
+## Upload files
 
+Upload files to the staging area in preparation for the next data push:
+
+```{r eval=FALSE}
+"VR2AR_XYZ_123.vrl" |>
+  otn_upload("my_project")
+```
+
+## Summarize your detection extracts
 You can create [otndo reports](https://otndo.obrien.page) using the `otn_receiver_summary` and `otn_tag_summary` helper functions.
 
 ```{r eval=FALSE}

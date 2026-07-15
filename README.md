@@ -58,16 +58,12 @@ You can install the development version of otndata from
 pak::pak("trackyverse/otndata")
 ```
 
-## Example
+## Search project metadata
 
 There are a few things that can be accessed without logging in. Most
 nodes come pre-baked with a statistics widget and a project map:
 
-<figure>
-<img src="man/figures/README-widget.png"
-alt="Alternative text description" />
-<figcaption aria-hidden="true">Alternative text description</figcaption>
-</figure>
+![](man/figures/README-widget.png)
 
 If this widget is enabled, you can access the information shown without
 needing to log in.
@@ -146,7 +142,7 @@ otn_list_stats(network = "otn_devel")
 #> [1] 468
 #> 
 #> $rcvr_count
-#> [1] 2815
+#> [1] 2814
 ```
 
 You can also query projects according to code, country of origin,
@@ -229,6 +225,8 @@ otn_search_contact("Mike O'Brien")
 #> 4 https://matos.asascience.com/
 ```
 
+## Logging in
+
 You’ll need to log in to access other parts of the CMS using
 `otn_login`. This package is meant to interface with any node’s Plone
 instance. You can switch between them using the `network` argument.
@@ -246,6 +244,8 @@ helper function.
 otn_set_credentials("act")
 otn_login("act")
 ```
+
+## Listing project files
 
 List your project’s files:
 
@@ -344,6 +344,8 @@ otn_extract_files(
 #> 5 2026-06-12 13:26:33 2026-06-12 13:26:33 krichie 602.3 KB File
 ```
 
+## Download files
+
 You can pipe this list into `otn_download` to save the files to your
 computer:
 
@@ -364,6 +366,17 @@ otn_download(
   url = "https://members.devel.oceantrack.org/data/repository/nsbs/detection-extracts/nsbs_matched_detections_2017.zip"
 )
 ```
+
+## Upload files
+
+Upload files to the staging area in preparation for the next data push:
+
+``` r
+"VR2AR_XYZ_123.vrl" |>
+  otn_upload("my_project")
+```
+
+## Summarize your detection extracts
 
 You can create [otndo reports](https://otndo.obrien.page) using the
 `otn_receiver_summary` and `otn_tag_summary` helper functions.
