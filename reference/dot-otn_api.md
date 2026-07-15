@@ -17,3 +17,8 @@ Call OTN API endpoints.
 - server:
 
   URL of the network's Plone CMS
+
+## See also
+
+[Plone REST API
+endpoints](https://6.docs.plone.org/plone.restapi/docs/source/endpoints)

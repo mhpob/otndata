@@ -23,3 +23,7 @@ otn_extract_files(project, since = NULL, batch_size = 25)
 - batch_size:
 
   Numeric. The number of results to return. Defaults to 25.
+
+## See also
+
+[.otn_files](https://otndata.obrien.page/reference/dot-otn_files.md)

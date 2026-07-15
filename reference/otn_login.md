@@ -27,3 +27,11 @@ everything works out, a token is written to the "SESSION_TOKEN" variable
 in the `otn_global` environment. Your username/password will not be
 saved – this was done intentionally so that you don't accidentally save
 credentials in a public script.
+
+## See also
+
+- [otn_set_credentials](https://otndata.obrien.page/reference/otn_set_credentials.md)
+
+- Plone REST API documentation:
+
+  - [Authentication](https://6.docs.plone.org/plone.restapi/docs/source/usage/authentication.html)

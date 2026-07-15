@@ -18,10 +18,12 @@
 - [`otn_extract_files()`](https://otndata.obrien.page/reference/otn_extract_files.md)
   : List OTN extract files.
 
-## Downloading files
+## Downloading and Uploading files
 
 - [`otn_download()`](https://otndata.obrien.page/reference/otn_download.md)
   : Download file(s) from an OTN-style Plone server.
+- [`otn_upload()`](https://otndata.obrien.page/reference/otn_upload.md)
+  : Upload a file to the Plone CMS
 
 ## Summarize data extracts
 
@@ -77,3 +79,5 @@ add-on installed, so be aware that they may not work.
   : Internal function to list small OTN databases.
 - [`.otn_search()`](https://otndata.obrien.page/reference/dot-otn_search.md)
   : Internal function for searching OTN projects.
+- [`build_namespace()`](https://otndata.obrien.page/reference/build_namespace.md)
+  : Build project namespace

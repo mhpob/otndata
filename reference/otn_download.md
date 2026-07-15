@@ -30,3 +30,9 @@ otn_download(files = NULL, url = NULL, outdir = ".")
 ## Value
 
 Silently returns a vector of file locations.
+
+\#' @seealso
+
+- Plone REST API documentation:
+
+  - [Serialization](https://6.docs.plone.org/plone.restapi/docs/source/usage/serialization.html#download-serialization)

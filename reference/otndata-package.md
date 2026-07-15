@@ -1,6 +1,7 @@
-# otndata: Access Ocean Tracking Network Data
+# otndata: Access Acoustic Telemetry Data on Plone Content Management Systems
 
-An R API to access data from the Ocean Tracking Network (OTN) database.
+An R API to interface with the Plone REST API of Ocean Tracking Network
+(OTN)-affiliated data portals.
 
 ## See also
 

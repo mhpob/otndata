@@ -27,3 +27,16 @@ Return files associated with an OTN project.
 
   Character. Portion of the URL representing the data type you wish to
   return.
+
+## See also
+
+- Plone REST API documentation:
+
+  - [Querystring
+    Search](https://6.docs.plone.org/plone.restapi/docs/source/endpoints/querystringsearch.html),
+    triggered when using the "`since`" argument. [Query operations are
+    listed
+    here.](https://6.docs.plone.org/plone.restapi/docs/source/endpoints/querystring.html).
+
+  - [Search](https://6.docs.plone.org/plone.restapi/docs/source/endpoints/searching.html),
+    a simpler search used when the "`since`" argument is NULL.
